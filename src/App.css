@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* start my css  */
+.backGroundImg{
+  background-image: url('/public/picture/homepic.jpeg');
+  background-size: auto;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width:100vw;
+}
