@@ -1,11 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const GameDetails = () => {
+  const navigate = useNavigate()
   return (
     <div>
-      {/* <div className="backGroundImg">
-                        dd
-                  </div> */}
+    
       <div>
         <img
           className=" w-full h-[500px] relative"
@@ -108,7 +108,7 @@ const GameDetails = () => {
             777 in offers bonuess, promotions,special event exciting contests
           </p>
           <div className=" flex justify-center mt-3">
-            <button className=" text-white font-medium bg-yellow-500 rounded-md w-32 py-2">
+            <button onClick={()=>navigate('/login')} className=" text-white font-medium bg-yellow-500 rounded-md w-32 py-2">
               join in
             </button>
           </div>
