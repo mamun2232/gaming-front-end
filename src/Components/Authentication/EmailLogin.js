@@ -1,8 +1,10 @@
 import React from 'react';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { AiOutlineMail } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 const EmailLogin = () => {
+  const navigate = useNavigate()
       return (
             <div>
             <form>
@@ -14,10 +16,11 @@ const EmailLogin = () => {
                   id=""
                   placeholder="Email"
                 />
-              </div>
-              <span className="text-2xl absolute top-40 left-8">
+                <span className="text-2xl absolute top-2 left-4  text-gray-500">
                 <AiOutlineMail />
               </span>
+              </div>
+              
               <div className="mt-4 h-12 relative">
                 <input
                   className="  w-full outline-none h-12 text-lg px-16 shadow-sm rounded-sm"
@@ -26,10 +29,11 @@ const EmailLogin = () => {
                   id=""
                   placeholder="Enter password"
                 />
-              </div>
-              <span className="text-2xl absolute top-56 left-8">
+                 <span className="text-2xl absolute top-2 left-4 text-gray-400">
                 <RiLockPasswordLine />
               </span>
+              </div>
+             
       
               <div>
                 <div className="form-control mt-4">
@@ -41,6 +45,7 @@ const EmailLogin = () => {
               </div>
       
               <input
+                 onClick={()=>navigate("/")}
                 className="  w-full outline-none h-12   bg-[#c7984a] mt-5 text-lg px-16 shadow-sm rounded-lg"
                 type="submit"
                 value="Login"
@@ -48,7 +53,7 @@ const EmailLogin = () => {
             </form>
       
             <div className=" flex justify-between mt-4">
-              <button className=" bg-white px-6 border-[#c7984a] rounded-lg border py-2">
+              <button onClick={()=>navigate("/register")} className=" bg-white px-6 border-[#c7984a] rounded-lg border py-2">
                 Register
               </button>
               <button className=" bg-white px-6 border-[#c7984a] rounded-lg border py-2">

@@ -1,9 +1,11 @@
 import { Tab } from "@headlessui/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import EmailLogin from "./EmailLogin";
 import PhoneLogin from "./PhoneLogin";
 
 const Login = () => {
+  
   const Tabs = [
     {
       name: "Phone Login",
@@ -31,7 +33,7 @@ const Login = () => {
 
       <div className="container mx-auto px-5">
         <Tab.Group>
-          <Tab.List className=" rounded-sm  lg:flex   justify-between h-14  bg-white mt-5">
+          <Tab.List className=" rounded-sm  flex   justify-between h-14  bg-white mt-5">
             {Tabs.map((item, index) => (
               <Tab
                 key={index}

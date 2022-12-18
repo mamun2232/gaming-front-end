@@ -15,7 +15,7 @@ const GameDetails = () => {
       </div>
 
       <div className=" absolute top-20  right-[45vw]">
-        <h1 className=" text-3xl text-yellow-500 font-medium">777.in</h1>
+        <h1 className=" text-3xl text-yellow-500 font-medium">333.in</h1>
       </div>
       <div className="absolute top-[18vh] right-[38vw]">
         <p className=" text-2xl text-yellow-500 font-medium text-center">

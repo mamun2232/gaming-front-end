@@ -6,7 +6,7 @@ const Navber = () => {
       <div className="   ">
         <div className="px-8 flex justify-between items-center h-16 border-b-4 border-[#bf9626]">
           <div className=" flex items-center">
-            <a className="text-yellow-500">777 in</a>
+            <a className="text-yellow-500">333 in</a>
           </div>
           <div className=" flex items-center">
             <button className=" bg-yellow-500 text-white px-3 py-1 rounded-lg">
