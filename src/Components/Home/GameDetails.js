@@ -2,10 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const GameDetails = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
-    
       <div>
         <img
           className=" w-full h-[500px] relative"
@@ -23,10 +22,16 @@ const GameDetails = () => {
         </p>
       </div>
 
-      <div className="absolute top-100   bottom-52 right-[45vw]">
-        <button className=" text-white font-medium bg-yellow-500 rounded-md w-32 py-1">
+      <div className="absolute top-100   bottom-36 right-[45vw]">
+        {/* <button className=" text-white font-medium bg-yellow-500 rounded-md w-32 py-1">
           Start
-        </button>
+        </button> */}
+        <img
+          onClick={() => navigate("/login")}
+          className="w-[180px]"
+          src="/picture/btn_start.png"
+          alt=""
+        />
       </div>
 
       <div className=" bg-[#020913] w-full pb-20 pt-10 px-3">
@@ -108,9 +113,18 @@ const GameDetails = () => {
             777 in offers bonuess, promotions,special event exciting contests
           </p>
           <div className=" flex justify-center mt-3">
-            <button onClick={()=>navigate('/login')} className=" text-white font-medium bg-yellow-500 rounded-md w-32 py-2">
+            {/* <button
+              onClick={() => navigate("/login")}
+              className=" text-white font-medium bg-yellow-500 rounded-md w-32 py-2"
+            >
               join in
-            </button>
+            </button> */}
+            <img
+              onClick={() => navigate("/login")}
+              className="w-[180px]"
+              src="/picture/btn_joinin.png"
+              alt=""
+            />
           </div>
         </div>
 
