@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './Components/Authentication/Login';
 import Reg from './Components/Authentication/Reg';
 import Win from './Components/WinGame/Win';
+import MyProfile from './Components/Profile/MyProfile';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Reg/>} />
         <Route path='/win' element={<Win/>} />
+        <Route path='/myProfile' element={<MyProfile/>} />
       </Routes>
       
 

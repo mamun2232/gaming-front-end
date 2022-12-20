@@ -44,13 +44,13 @@ const BottomNavigation = () => {
         <span className="text-xl">
           <TfiGame />
         </span>
-        <span className="btm-nav-label">My Profile</span>
+        <span className="btm-nav-label">Win</span>
       </button>
-      <button>
+      <button onClick={() => navigate("/myProfile")}>
         <span className="text-xl">
           <CgProfile />
         </span>
-        <span className="btm-nav-label">My Profile</span>
+        <span className="btm-nav-label">My profile</span>
       </button>
     </div>
   );

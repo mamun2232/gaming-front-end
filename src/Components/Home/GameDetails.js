@@ -14,7 +14,7 @@ const GameDetails = () => {
       </div>
 
       <div className=" absolute top-20  right-[45vw]">
-        <h1 className=" text-3xl text-yellow-500 font-medium">333.in</h1>
+        <h1 className=" text-3xl text-yellow-500 font-medium">123.in</h1>
       </div>
       <div className="absolute top-[18vh] right-[38vw]">
         <p className=" text-2xl text-yellow-500 font-medium text-center">
@@ -110,7 +110,7 @@ const GameDetails = () => {
 
         <div className="mt-4">
           <p className="text-sm text-yellow-500 text-center">
-            777 in offers bonuess, promotions,special event exciting contests
+            123 in offers bonuess, promotions,special event exciting contests
           </p>
           <div className=" flex justify-center mt-3">
             {/* <button
