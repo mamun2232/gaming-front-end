@@ -9,12 +9,14 @@ import {
 import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import { GrAppsRounded, GrShieldSecurity } from "react-icons/gr";
 import { TbListDetails } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 const ProfileSection = () => {
   const [wallet, setWallet] = useState(false);
   const [report, setRepot] = useState(false);
   const [security, setSecurity] = useState(false);
   const [about, setAbout] = useState(false);
-  console.log(wallet);
+
+  const navigate = useNavigate();
   return (
     <div className=" bg-base-200">
       <div className=" pt-4 px-4">
@@ -56,7 +58,7 @@ const ProfileSection = () => {
         <div className="  h-full bg-white rounded-lg px-4 py-4 mt-5">
           <div
             onClick={() => setWallet(!wallet)}
-            className="h-12 border-b flex justify-between"
+            className="h-12 border-b flex justify-between cursor-pointer"
           >
             <p className=" flex  items-center text-md font-med text-gray-900">
               <span className="pr-2 text-[#6739b6]">
@@ -70,13 +72,19 @@ const ProfileSection = () => {
           </div>
           {wallet && (
             <>
-              <div className="h-12 border-b flex justify-between px-8">
+              <div
+                onClick={() => navigate("/recharge")}
+                className="h-12 border-b flex justify-between px-8 cursor-pointer"
+              >
                 <p className=" flex  items-center ">Recharge</p>
                 <span className=" flex  items-center text-xl">
                   <FaRegArrowAltCircleRight />
                 </span>
               </div>
-              <div className="h-12 border-b flex justify-between px-8">
+              <div
+                onClick={() => navigate("/withdrow")}
+                className="h-12 border-b flex justify-between px-8 cursor-pointer"
+              >
                 <p className=" flex  items-center ">Withdrawal</p>
                 <span className=" flex  items-center text-xl">
                   <FaRegArrowAltCircleRight />
@@ -114,7 +122,7 @@ const ProfileSection = () => {
               </div>
             </>
           )}
-          <div className="h-12 border-b flex justify-between">
+          <div onClick={() => navigate("/gift")} className="h-12 border-b flex justify-between cursor-pointer">
             <p className=" flex  items-center text-md font-med text-gray-900">
               <span className="pr-2 text-[#6739b6]">
                 <AiOutlineGift />
@@ -127,7 +135,7 @@ const ProfileSection = () => {
           </div>
           <div
             onClick={() => setSecurity(!security)}
-            className="h-12 border-b flex justify-between"
+            className="h-12 border-b flex justify-between cursor-pointer"
           >
             <p className=" flex  items-center text-md font-med text-gray-900">
               <span className="pr-2 text-[#6739b6]">
@@ -145,7 +153,7 @@ const ProfileSection = () => {
           </div>
           {security && (
             <>
-              <div className="h-12 border-b flex justify-between px-8">
+              <div onClick={() => navigate("/restPassword")} className="h-12 border-b flex justify-between px-8 cursor-pointer">
                 <p className=" flex  items-center ">Reset Password</p>
                 <span className=" flex  items-center text-xl">
                   <FaRegArrowAltCircleRight />
