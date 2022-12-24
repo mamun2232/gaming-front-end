@@ -5,24 +5,22 @@ const GameDetails = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div>
+      <div className="w-full h-[500px] relative">
         <img
-          className=" w-full h-[500px] relative"
+          className=" w-full h-[500px] "
           src="/picture/homepic.jpeg"
           alt=""
         />
-      </div>
-
-      <div className=" absolute top-20  right-[45vw]">
+        <div className=" absolute top-6  right-32 lg:right-[47vw]">
         <h1 className=" text-3xl text-yellow-500 font-medium">123.in</h1>
       </div>
-      <div className="absolute top-[18vh] right-[38vw]">
-        <p className=" text-2xl text-yellow-500 font-medium text-center">
+      <div className=" absolute top-16 lg:right-[40vw] px-4">
+        <p className=" text-2xl sm:text-xl text-yellow-500 font-medium text-center">
           The Best Solt Mechine game <br /> Desinged for real player
         </p>
       </div>
 
-      <div className="absolute top-100   bottom-36 right-[45vw]">
+      <div className="absolute top-100    top-96 lg:right-[45vw] right-24">
         {/* <button className=" text-white font-medium bg-yellow-500 rounded-md w-32 py-1">
           Start
         </button> */}
@@ -34,9 +32,15 @@ const GameDetails = () => {
         />
       </div>
 
+      </div>
+
+      
+
+      
+
       <div className=" bg-[#020913] w-full pb-20 pt-10 px-3">
-        <div className="card w-full bg-[#102739] h-20 shadow-xl  flex">
-          <div className="px-3 py-3">
+        <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex ">
+          <div className="px-5 py-3  flex justify-between ">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -44,11 +48,13 @@ const GameDetails = () => {
                 quis dolore quas nam eum debitis?
               </p>
             </div>
-            <div className=" "></div>
+            <div className=" flex  items-center ">
+              <img className="w-12 h-12" src="/picture/dtpk.png" alt="" />
+            </div>
           </div>
         </div>
-        <div className="card w-full bg-[#102739] h-20 shadow-xl  flex mt-3">
-          <div className="px-5 py-2">
+        <div className="card w-full bg-[#102739] lg:h-20 h-28  shadow-xl  flex mt-3">
+          <div className="px-5 py-2 flex justify-between">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -56,11 +62,13 @@ const GameDetails = () => {
                 quis dolore quas nam eum debitis?
               </p>
             </div>
-            <div className=" "></div>
+            <div className=" flex  items-center ">
+              <img className="w-12 h-12" src="/picture/game_abfun.png" alt="" />
+            </div>
           </div>
         </div>
-        <div className="card w-full bg-[#102739] h-20 shadow-xl  flex mt-3">
-          <div className="px-5 py-2">
+        <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
+          <div className="px-5 py-2 flex justify-between">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -68,11 +76,13 @@ const GameDetails = () => {
                 quis dolore quas nam eum debitis?
               </p>
             </div>
-            <div className=" "></div>
+            <div className=" flex  items-center ">
+              <img className="w-12 h-12" src="/picture/game_holdem.png" alt="" />
+            </div>
           </div>
         </div>
-        <div className="card w-full bg-[#102739] h-20 shadow-xl  flex mt-3">
-          <div className="px-5 py-2">
+        <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
+          <div className="px-5 py-2 flex justify-between">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -80,11 +90,13 @@ const GameDetails = () => {
                 quis dolore quas nam eum debitis?
               </p>
             </div>
-            <div className=" "></div>
+            <div className=" flex  items-center ">
+              <img className="w-12 h-12" src="/picture/game_luxurycar.png" alt="" />
+            </div>
           </div>
         </div>
-        <div className="card w-full bg-[#102739] h-20 shadow-xl  flex mt-3">
-          <div className="px-5 py-2">
+        <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
+          <div className="px-5 py-2  flex  justify-between">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -92,11 +104,13 @@ const GameDetails = () => {
                 quis dolore quas nam eum debitis?
               </p>
             </div>
-            <div className=" "></div>
+            <div className=" flex  items-center ">
+              <img className="w-12 h-12" src="/picture/game_rummy.png" alt="" />
+            </div>
           </div>
         </div>
-        <div className="card w-full bg-[#102739] h-20 shadow-xl  flex mt-3">
-          <div className="px-5 py-2">
+        <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
+          <div className="px-5 py-2 flex justify-between">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -104,7 +118,9 @@ const GameDetails = () => {
                 quis dolore quas nam eum debitis?
               </p>
             </div>
-            <div className=" "></div>
+            <div className=" flex  items-center ">
+              <img className="w-12 h-12" src="/picture/game_wingo.png" alt="" />
+            </div>
           </div>
         </div>
 

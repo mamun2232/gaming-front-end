@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BsFileEarmarkCode } from "react-icons/bs";
-import { CgSmartphone} from "react-icons/cg";
+import { CgSmartphone } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
-
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 const PhoneRegister = () => {
   const navigate = useNavigate();
+  const [value, setValue] = useState();
   return (
     <div>
       <form>
@@ -75,7 +77,7 @@ const PhoneRegister = () => {
         </div>
 
         <input
-           onClick={()=>navigate("/")}
+          onClick={() => navigate("/")}
           className="  w-full outline-none h-12   font-medium  bg-[#c7984a] mt-5 text-lg px-16 shadow-sm rounded-lg"
           type="submit"
           value="Login"

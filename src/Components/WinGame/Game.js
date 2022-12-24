@@ -35,7 +35,7 @@ const Game = () => {
               <p className=" pl-4 text-2xl">93874398439</p>
             </div>
             <div>
-              <div className="  text-end">
+              <div className="  text-end px-4">
                 <span className="  text-gray-700">Count Down</span>
                 <p className=" pl-4 text-2xl">03:00</p>
               </div>
@@ -43,28 +43,26 @@ const Game = () => {
           </div>
 
           <div className=" mt-4 flex  justify-around ">
-            <button className=" px-6 py-2 rounded-lg bg-[#39b54a] text-[#ffffff]">
-              Join Green
+            <button className=" px-6 py-2 rounded-lg bg-[#2374e1] text-[#ffffff]">
+              Facebook
             </button>
-            <button className=" px-6 py-2 rounded-lg bg-[#6739b6] text-[#ffffff]">
-              Join Violet
-            </button>
+          
             <button className=" px-6 py-2 rounded-lg bg-[#ff4019] text-[#ffffff]">
-              Join Red
+             Tiktok
             </button>
           </div>
 
           <div className=" mt-5 flex gap-3">
-            <button className=" w-full text-[#ffffff] rounded-lg bg-[#6739b6] h-12">
+            <button className=" w-full text-[#ffffff] rounded-lg bg-[#ff4019]  h-12">
               0
             </button>
-            <button className=" w-full text-[#ffffff] rounded-lg bg-[#39b54a] h-12">
+            <button className=" w-full text-[#ffffff] rounded-lg bg-[#2374e1] h-12">
               1
             </button>
             <button className=" w-full text-[#ffffff] rounded-lg bg-[#ff4019]  h-12">
               2
             </button>
-            <button className=" w-full text-[#ffffff] rounded-lg bg-[#39b54a] h-12">
+            <button className=" w-full text-[#ffffff] rounded-lg bg-[#2374e1] h-12">
               3
             </button>
             <button className=" w-full text-[#ffffff] rounded-lg bg-[#ff4019]  h-12">
@@ -72,19 +70,19 @@ const Game = () => {
             </button>
           </div>
           <div className=" mt-4 flex gap-3">
-            <button className=" w-full text-[#ffffff] rounded-lg bg-[#6739b6] h-12">
+            <button className=" w-full text-[#ffffff] rounded-lg bg-[#2374e1]  h-12">
               5
             </button>
             <button className=" w-full text-[#ffffff] rounded-lg bg-[#ff4019]  h-12">
               6
             </button>
-            <button className=" w-full text-[#ffffff] rounded-lg bg-[#39b54a] h-12">
+            <button className=" w-full text-[#ffffff] rounded-lg bg-[#2374e1] h-12">
               7
             </button>
             <button className=" w-full text-[#ffffff] rounded-lg bg-[#ff4019]  h-12">
               8
             </button>
-            <button className=" w-full text-[#ffffff] rounded-lg bg-[#39b54a] h-12">
+            <button className=" w-full text-[#ffffff] rounded-lg bg-[#2374e1] h-12">
               9
             </button>
           </div>
