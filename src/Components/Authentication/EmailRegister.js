@@ -25,6 +25,9 @@ const EmailRegister = () => {
     const body = { name, email, password, whatsApp, invitedCode, userId: id };
     disPatch(registerUser(body));
   };
+  if (user?.success) {
+    navigate("/");
+  }
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>

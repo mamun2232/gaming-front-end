@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const GameDetails = () => {
   const navigate = useNavigate();
+
   return (
     <div>
       <div className="w-full h-[500px] relative">
@@ -25,7 +26,7 @@ const GameDetails = () => {
           Start
         </button> */}
         <img
-          onClick={() => navigate("/login")}
+          onClick={() => navigate("/win")}
           className="w-[180px]"
           src="/picture/btn_start.png"
           alt=""
@@ -136,7 +137,7 @@ const GameDetails = () => {
               join in
             </button> */}
             <img
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/win")}
               className="w-[180px]"
               src="/picture/btn_joinin.png"
               alt=""

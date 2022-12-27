@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineGift } from "react-icons/ai";
 import { BsWallet2 } from "react-icons/bs";
 import {
@@ -10,13 +10,34 @@ import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import { GrAppsRounded, GrShieldSecurity } from "react-icons/gr";
 import { TbListDetails } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../app/slice/authSlice";
+import axios from "axios";
 const ProfileSection = () => {
   const [wallet, setWallet] = useState(false);
   const [report, setRepot] = useState(false);
   const [security, setSecurity] = useState(false);
   const [about, setAbout] = useState(false);
-
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const disPatch = useDispatch();
+  useEffect(() => {
+    console.log(localStorage.getItem("gamingUser"));
+    const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
+      fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if(data.success){
+          setUser(data.user)
+          
+        }
+      })
+ 
+  }, []);
+
+  console.log(user);
+
   return (
     <div className=" bg-base-200">
       <div className=" pt-4 px-4">
@@ -31,16 +52,16 @@ const ProfileSection = () => {
             </div>
             <div>
               <p className="text-gay-900 font-medium text-sm mt-1">
-                User juboajislam22@gmail.com
+                User Name {user?.name}
               </p>
               <p className="text-gay-900 font-medium text-sm mt-1">
-                Id 089393434
+                Id {user?.userId}
               </p>
               <p className="text-gay-900 font-medium text-sm mt-1">
-                Email juboajislam22@gmail.com
+                Email {user?.email}
               </p>
               <p className="text-gay-900 font-medium text-sm mt-1">
-                Availabe Balance 0
+                Availabe Balance {user?.balance}
               </p>
             </div>
           </div>
@@ -122,7 +143,10 @@ const ProfileSection = () => {
               </div>
             </>
           )}
-          <div onClick={() => navigate("/gift")} className="h-12 border-b flex justify-between cursor-pointer">
+          <div
+            onClick={() => navigate("/gift")}
+            className="h-12 border-b flex justify-between cursor-pointer"
+          >
             <p className=" flex  items-center text-md font-med text-gray-900">
               <span className="pr-2 text-[#6739b6]">
                 <AiOutlineGift />
@@ -153,7 +177,10 @@ const ProfileSection = () => {
           </div>
           {security && (
             <>
-              <div onClick={() => navigate("/restPassword")} className="h-12 border-b flex justify-between px-8 cursor-pointer">
+              <div
+                onClick={() => navigate("/restPassword")}
+                className="h-12 border-b flex justify-between px-8 cursor-pointer"
+              >
                 <p className=" flex  items-center ">Reset Password</p>
                 <span className=" flex  items-center text-xl">
                   <FaRegArrowAltCircleRight />
@@ -207,7 +234,10 @@ const ProfileSection = () => {
         </div>
 
         <div className=" py-5">
-          <button className=" h-12 bg-white rounded-lg shadow-md w-full  uppercase">
+          <button
+            onClick={() => disPatch(logOut())}
+            className=" h-12 bg-white rounded-lg shadow-md w-full  uppercase"
+          >
             LogOut
           </button>
         </div>

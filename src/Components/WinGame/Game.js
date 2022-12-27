@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GiTrophyCup } from "react-icons/gi";
 const Game = () => {
+  const [user , setUser] = useState({})
+  useEffect(() => {
+    console.log(localStorage.getItem("gamingUser"));
+    const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
+      fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if(data.success){
+          setUser(data.user)
+          
+        }
+      })
+ 
+  }, []);
   return (
     <div className="  h-full bg-base-200">
       <div className="pt-4 px-4 ">
         <div className=" h-32 bg-white rounded-lg px-4 py-4">
           <p className=" text-gray-900 font-medium">
-            Available balance : <span className="text-gray-800 px-4">0</span>
+            Available balance : <span className="text-gray-800 px-4">{user?.balance}</span>
           </p>
 
           <div className=" mt-5 flex justify-between">
