@@ -39,18 +39,7 @@ const PhoneRegister = () => {
           </span>
         </div>
 
-        <div className="mt-4 h-12 relative">
-          <input
-            className="  w-full outline-none h-12 text-lg px-16 shadow-sm rounded-lg"
-            type="password"
-            name=""
-            id=""
-            placeholder="Withdraw Password"
-          />
-          <span className="text-2xl absolute top-2 left-4 text-gray-500">
-            <RiLockPasswordLine />
-          </span>
-        </div>
+   
         <div className="mt-4 h-12 relative">
           <input
             className="  w-full outline-none h-12 text-lg px-16 shadow-sm rounded-lg"

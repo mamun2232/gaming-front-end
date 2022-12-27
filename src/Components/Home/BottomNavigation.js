@@ -2,8 +2,10 @@ import React from "react";
 import { TfiGame } from "react-icons/tfi";
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const BottomNavigation = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
   return (
     <div className="btm-nav bg-white border shadow-lg  h-14">
       <button onClick={() => navigate("/")}>
@@ -40,12 +42,13 @@ const BottomNavigation = () => {
         </svg>
         <span className="btm-nav-label">Warnings</span>
       </button> */}
-      <button onClick={() => navigate("/win")}>
+      {user !== null && <button onClick={() => navigate("/win")}>
         <span className="text-xl">
           <TfiGame />
         </span>
         <span className="btm-nav-label">Win</span>
       </button>
+}
       <button onClick={() => navigate("/myProfile")}>
         <span className="text-xl">
           <CgProfile />

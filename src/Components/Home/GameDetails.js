@@ -40,7 +40,7 @@ const GameDetails = () => {
 
       <div className=" bg-[#020913] w-full pb-20 pt-10 px-3">
         <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex ">
-          <div className="px-5 py-3  flex justify-between ">
+          <div className="px-5 py-3  flex justify-between gap-5 ">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -49,12 +49,12 @@ const GameDetails = () => {
               </p>
             </div>
             <div className=" flex  items-center ">
-              <img className="w-12 h-12" src="/picture/dtpk.png" alt="" />
+              <img className="lg:w-12 w-28 h-12" src="/picture/dtpk.png" alt="" />
             </div>
           </div>
         </div>
         <div className="card w-full bg-[#102739] lg:h-20 h-28  shadow-xl  flex mt-3">
-          <div className="px-5 py-2 flex justify-between">
+          <div className="px-5 py-2 flex justify-between gap-5">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -63,12 +63,12 @@ const GameDetails = () => {
               </p>
             </div>
             <div className=" flex  items-center ">
-              <img className="w-12 h-12" src="/picture/game_abfun.png" alt="" />
+              <img className="lg:w-12 w-28 h-12" src="/picture/game_abfun.png" alt="" />
             </div>
           </div>
         </div>
         <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
-          <div className="px-5 py-2 flex justify-between">
+          <div className="px-5 py-2 flex justify-between gap-5">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -77,12 +77,12 @@ const GameDetails = () => {
               </p>
             </div>
             <div className=" flex  items-center ">
-              <img className="w-12 h-12" src="/picture/game_holdem.png" alt="" />
+              <img className="lg:w-12 w-28 h-12" src="/picture/game_holdem.png" alt="" />
             </div>
           </div>
         </div>
         <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
-          <div className="px-5 py-2 flex justify-between">
+          <div className="px-5 py-2 flex justify-between gap-5">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -91,12 +91,12 @@ const GameDetails = () => {
               </p>
             </div>
             <div className=" flex  items-center ">
-              <img className="w-12 h-12" src="/picture/game_luxurycar.png" alt="" />
+              <img className="lg:w-12 w-28 h-12" src="/picture/game_luxurycar.png" alt="" />
             </div>
           </div>
         </div>
         <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
-          <div className="px-5 py-2  flex  justify-between">
+          <div className="px-5 py-2  flex  justify-between gap-5 ">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -105,12 +105,12 @@ const GameDetails = () => {
               </p>
             </div>
             <div className=" flex  items-center ">
-              <img className="w-12 h-12" src="/picture/game_rummy.png" alt="" />
+              <img className="lg:w-12 w-28 h-12" src="/picture/game_rummy.png" alt="" />
             </div>
           </div>
         </div>
         <div className="card w-full bg-[#102739] lg:h-20 h-28 shadow-xl  flex mt-3">
-          <div className="px-5 py-2 flex justify-between">
+          <div className="px-5 py-2 flex justify-between gap-5">
             <div className=" ">
               <h1 className="text-2xl font-medium text-yellow-500">Wingo</h1>
               <p className="text-sm font-medium text-base-200">
@@ -119,7 +119,7 @@ const GameDetails = () => {
               </p>
             </div>
             <div className=" flex  items-center ">
-              <img className="w-12 h-12" src="/picture/game_wingo.png" alt="" />
+              <img className="lg:w-12 w-28 h-12" src="/picture/game_wingo.png" alt="" />
             </div>
           </div>
         </div>
