@@ -25,7 +25,7 @@ const Game = () => {
           setUser(data.user);
         }
       });
-  }, []);
+  }, [isOpen]);
 
   const gamingNumber = [
     { number: 0, color: "red" },
@@ -52,7 +52,7 @@ const Game = () => {
         <div className=" h-32 bg-white rounded-lg px-4 py-4">
           <p className=" text-gray-900 font-medium">
             Available balance :{" "}
-            <span className="text-gray-800 px-4">{user?.balance}</span>
+            <span className="text-gray-800 px-2">{user?.balance}</span>
           </p>
 
           <div className=" mt-5 flex justify-between">
@@ -159,6 +159,8 @@ const Game = () => {
               openModal={openModal}
               color={selectedColor}
               number={selectedNumber}
+              balance={user?.balance}
+              userId={user?._id}
             />
           )}
 
