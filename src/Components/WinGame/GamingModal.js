@@ -10,6 +10,7 @@ const GamingModal = ({
   color,
   balance,
   userId,
+  peroid
 }) => {
   const [selectedMoney, setSelectedMoney] = useState(10);
   // const [totalMoney , setTotalMoney] = useState(10)
@@ -66,7 +67,7 @@ const GamingModal = ({
         body: JSON.stringify({
           userId,
           money: quantity * selectedMoney,
-          PeroidNo: "343435",
+          PeroidNo: peroid,
           gameName: "facebook",
         }),
       })
@@ -108,7 +109,7 @@ const GamingModal = ({
         body: JSON.stringify({
           userId,
           money: quantity * selectedMoney,
-          PeroidNo: "343435",
+          PeroidNo: peroid,
           gameName: "Tiktok",
         }),
       })

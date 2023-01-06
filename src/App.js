@@ -12,6 +12,7 @@ import Gift from "./Components/Profile/Gift";
 import ResetPassword from "./Components/Profile/ResetPassword";
 import { ToastContainer } from "react-toastify";
 import RequreAuth from "./Components/Authentication/RequreAuth";
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/register" element={<Reg />} />
         <Route path="/win" element={<RequreAuth><Win /></RequreAuth>} />
         <Route path="/myProfile" element={<RequreAuth><MyProfile /></RequreAuth>} />
+        <Route path="/dashboard" element={<RequreAuth> <Dashboard/></RequreAuth>} />
         <Route path="/withdrow" element={<Withdrow />} />
         <Route path="/recharge" element={<Recharge />} />
         <Route path="/gift" element={<Gift />} />

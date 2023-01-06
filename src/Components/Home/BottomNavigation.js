@@ -55,6 +55,12 @@ const BottomNavigation = () => {
         </span>
         <span className="btm-nav-label">My profile</span>
       </button>
+      <button onClick={() => navigate("/dashboard")}>
+        <span className="text-xl">
+          <CgProfile />
+        </span>
+        <span className="btm-nav-label">Dashboard</span>
+      </button>
     </div>
   );
 };
