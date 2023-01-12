@@ -11,7 +11,7 @@ const Game = () => {
   const [seconds, setSeconds] = useState(parseInt(localStorage.getItem("seconds")) || 0);
   const [peroid , setProid] = useState(null)
   const [result , setResult] = useState([])
-  console.log(minutes, seconds);
+ 
   function closeModal() {
     setIsOpen(false);
   }
@@ -31,14 +31,14 @@ const Game = () => {
         }
       });
 
-      fetch("http://localhost:5000/api/v1/result/peroid")
+      fetch("https://gaming-backend.vercel.app/api/v1/result/peroid")
       .then((res) =>res.json())
       .then((result) => {
         if(result.success){
           setProid(result.peroid)
         }
       })
-      fetch("http://localhost:5000/api/v1/result/allResult")
+      fetch("https://gaming-backend.vercel.app/api/v1/result/allResult")
       .then((res) =>res.json())
       .then((result) => {
         if(result.success){
@@ -50,7 +50,7 @@ const Game = () => {
       
   }, [isOpen , peroid ]);
 
-
+console.log(user.userId);
   const gamingNumber = [
     { number: 0, color: "red" },
     { number: 1, color: "sky" },
@@ -94,7 +94,7 @@ const Game = () => {
     return ()=> clearInterval(interval)
   }, [minutes , seconds]);
 
-console.log(minutes);
+
   return (
     <div className="  h-full bg-base-200">
       <div className="pt-4 px-4 ">
@@ -145,7 +145,7 @@ console.log(minutes);
 
           <div className=" mt-4 flex  justify-around ">
             <button
-              onClick={() => gameStartHendeler("Facebook", "sky")}
+              onClick={() => gameStartHendeler("facebook", "sky")}
               className=" px-6 py-2 rounded-lg bg-[#2374e1] text-[#ffffff]"
             >
               Facebook
@@ -216,6 +216,7 @@ console.log(minutes);
               number={selectedNumber}
               balance={user?.balance}
               userId={user?._id}
+              userIdNumber={user?.userId}
               peroid={peroid}
             />
           )}

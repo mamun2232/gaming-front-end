@@ -13,7 +13,9 @@ import ResetPassword from "./Components/Profile/ResetPassword";
 import { ToastContainer } from "react-toastify";
 import RequreAuth from "./Components/Authentication/RequreAuth";
 import Dashboard from "./Components/Dashboard/Dashboard";
-
+import Game from "./Components/Dashboard/Game";
+import GamerDetails from "./Components/Dashboard/GamerDetails";
+import AdminWithdrow from "./Components/Dashboard/Withdrow/Withdrow";
 function App() {
   return (
     <div className="w-[100vw] h-[100vh]">
@@ -23,7 +25,12 @@ function App() {
         <Route path="/register" element={<Reg />} />
         <Route path="/win" element={<RequreAuth><Win /></RequreAuth>} />
         <Route path="/myProfile" element={<RequreAuth><MyProfile /></RequreAuth>} />
-        <Route path="/dashboard" element={<RequreAuth> <Dashboard/></RequreAuth>} />
+        <Route path="/dashboard" element={<RequreAuth> <Dashboard>
+         </Dashboard></RequreAuth>} >
+         <Route index element={<Game/>}></Route>
+         <Route path="/dashboard/gamerDetails/:id" element={<GamerDetails/>}></Route>
+         <Route path="/dashboard/withdrow" element={<AdminWithdrow   />}></Route>
+          </Route>
         <Route path="/withdrow" element={<Withdrow />} />
         <Route path="/recharge" element={<Recharge />} />
         <Route path="/gift" element={<Gift />} />

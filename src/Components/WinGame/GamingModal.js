@@ -10,7 +10,8 @@ const GamingModal = ({
   color,
   balance,
   userId,
-  peroid
+  peroid,
+  userIdNumber,
 }) => {
   const [selectedMoney, setSelectedMoney] = useState(10);
   // const [totalMoney , setTotalMoney] = useState(10)
@@ -53,13 +54,13 @@ const GamingModal = ({
     }
     if (
       number == 1 ||
-      Number == 3 ||
+      number == 3 ||
       number == 5 ||
       number == 7 ||
       number == 9 ||
       number == "facebook"
     ) {
-      fetch("http://localhost:5000/api/v1/game/win", {
+      fetch("https://gaming-backend.vercel.app/api/v1/game/win", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -69,6 +70,7 @@ const GamingModal = ({
           money: quantity * selectedMoney,
           PeroidNo: peroid,
           gameName: "facebook",
+          userIdNumber,
         }),
       })
         .then((res) => res.json())
@@ -101,7 +103,7 @@ const GamingModal = ({
           }
         });
     } else {
-      fetch("http://localhost:5000/api/v1/game/win", {
+      fetch("https://gaming-backend.vercel.app/api/v1/game/win", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -111,6 +113,7 @@ const GamingModal = ({
           money: quantity * selectedMoney,
           PeroidNo: peroid,
           gameName: "Tiktok",
+          userIdNumber,
         }),
       })
         .then((res) => res.json())
@@ -145,7 +148,6 @@ const GamingModal = ({
     }
   };
 
-  console.log(typeof balance);
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>

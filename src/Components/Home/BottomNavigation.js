@@ -1,6 +1,7 @@
 import React from "react";
 import { TfiGame } from "react-icons/tfi";
 import { CgProfile } from "react-icons/cg";
+import { RxDashboard } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 const BottomNavigation = () => {
@@ -57,7 +58,7 @@ const BottomNavigation = () => {
       </button>
       <button onClick={() => navigate("/dashboard")}>
         <span className="text-xl">
-          <CgProfile />
+          <RxDashboard/>
         </span>
         <span className="btm-nav-label">Dashboard</span>
       </button>
