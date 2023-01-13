@@ -60,7 +60,7 @@ const GamingModal = ({
       number == 9 ||
       number == "facebook"
     ) {
-      fetch("https://gaming-backend.vercel.app/api/v1/game/win", {
+      fetch("http://localhost:5000/api/v1/game/win", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -103,7 +103,7 @@ const GamingModal = ({
           }
         });
     } else {
-      fetch("https://gaming-backend.vercel.app/api/v1/game/win", {
+      fetch("http://localhost:5000/api/v1/game/win", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

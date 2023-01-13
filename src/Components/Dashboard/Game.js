@@ -9,13 +9,13 @@ const Game = () => {
   const [tiktok, setTikTok] = useState([]);
   const [tiktokAmoun, setTiktkAmoun] = useState(0);
   useEffect(() => {
-    fetch("https://gaming-backend.vercel.app/api/v1/result/peroid")
+    fetch("http://localhost:5000/api/v1/result/peroid")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
           setProid(result.peroid);
 
-          fetch(`https://gaming-backend.vercel.app/api/v1/game/game/${result?.peroid}`)
+          fetch(`http://localhost:5000/api/v1/game/game/${result?.peroid}`)
             .then((res) => res.json())
             .then((data) => {
               if (data.success) {
@@ -50,7 +50,7 @@ const Game = () => {
       return { id: userId, money: money * 2 };
     });
 
-    fetch("https://gaming-backend.vercel.app/api/v1/game/game/win", {
+    fetch("http://localhost:5000/api/v1/game/game/win", {
       method: "PUT",
       body: JSON.stringify(facebookMap),
       headers: {
@@ -65,7 +65,7 @@ const Game = () => {
             price: facebookAmoun,
             winResult: "facebook",
           };
-          fetch("https://gaming-backend.vercel.app/api/v1/result//results", {
+          fetch("http://localhost:5000/api/v1/result/results", {
             method: "POST",
             body: JSON.stringify(peroidResult),
             headers: {
@@ -97,7 +97,7 @@ const Game = () => {
       return { id: userId, money: money * 2 };
     });
 
-    fetch("https://gaming-backend.vercel.app/api/v1/game/game/win/tiktok", {
+    fetch("http://localhost:5000/api/v1/game/game/win/tiktok", {
       method: "PUT",
       body: JSON.stringify(tiktokMap),
       headers: {
@@ -110,9 +110,9 @@ const Game = () => {
           const peroidResult = {
             peroid: peroid,
             price: facebookAmoun,
-            winResult: "tiktok",
+            winResult: "Tiktok",
           };
-          fetch("https://gaming-backend.vercel.app/api/v1/result//results", {
+          fetch("http://localhost:5000/api/v1/result/results", {
             method: "POST",
             body: JSON.stringify(peroidResult),
             headers: {
@@ -208,7 +208,7 @@ const Game = () => {
         </table>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-5">
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-2  gap-5">
         <div className="   ">
           <Facebook gamingUser={facebook} />
 

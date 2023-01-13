@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 import { GiTrophyCup } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 import GamingModal from "./GamingModal";
 const Game = () => {
   const [user, setUser] = useState({});
@@ -12,6 +13,7 @@ const Game = () => {
   const [peroid , setProid] = useState(null)
   const [result , setResult] = useState([])
  
+  const navigate = useNavigate()
   function closeModal() {
     setIsOpen(false);
   }
@@ -20,25 +22,25 @@ const Game = () => {
     setIsOpen(true);
   }
   useEffect(() => {
-    console.log(localStorage.getItem("gamingUser"));
+
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
-    fetch(`https://gaming-backend.vercel.app/api/v1/user/user/${userInfo?._id}`)
+    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         if (data.success) {
           setUser(data.user);
         }
       });
 
-      fetch("https://gaming-backend.vercel.app/api/v1/result/peroid")
+      fetch("http://localhost:5000/api/v1/result/peroid")
       .then((res) =>res.json())
       .then((result) => {
         if(result.success){
           setProid(result.peroid)
         }
       })
-      fetch("https://gaming-backend.vercel.app/api/v1/result/allResult")
+      fetch("http://localhost:5000/api/v1/result/allResult")
       .then((res) =>res.json())
       .then((result) => {
         if(result.success){
@@ -111,7 +113,7 @@ console.log(user.userId);
             <button className="  bbg-base-200  border-[#c7984a] border  px-4 rounded-lg py-2 font-medium">
               Read Rule
             </button>
-            <button className=" w-[100px] bg-base-200 px-4 border-[#c7984a]  border  rounded-lg py-2 font-medium">
+            <button onClick={()=>navigate("/recorde")} className=" w-[100px] bg-base-200 px-4 border-[#c7984a]  border  rounded-lg py-2 font-medium">
               Record
             </button>
 

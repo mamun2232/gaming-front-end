@@ -16,11 +16,13 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Game from "./Components/Dashboard/Game";
 import GamerDetails from "./Components/Dashboard/GamerDetails";
 import AdminWithdrow from "./Components/Dashboard/Withdrow/Withdrow";
+import Recode from "./Components/Home/Recode";
 function App() {
   return (
     <div className="w-[100vw] h-[100vh]">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/recorde" element={<Recode />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Reg />} />
         <Route path="/win" element={<RequreAuth><Win /></RequreAuth>} />

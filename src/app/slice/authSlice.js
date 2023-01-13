@@ -10,13 +10,13 @@ const initialState = {
 
 export const registerUser = createAsyncThunk("registerUser", async (body) => {
   return axios
-    .post("https://gaming-backend.vercel.app/api/v1/user/register", body)
+    .post("http://localhost:5000/api/v1/user/register", body)
     .then((res) => res.data);
 });
 
 export const loginUser = createAsyncThunk("login", async (body) => {
   return axios
-    .post("https://gaming-backend.vercel.app/api/v1/user/login", body)
+    .post("http://localhost:5000/api/v1/user/login", body)
     .then((res) => res.data);
 });
 
