@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
-import ReachrgeTable from "./ReachrgeTable";
+import RasultTable from "./RasultTable";
 
-const Reachrge = () => {
-  const [reachrges, setRechrge] = useState([]);
+const Result = () => {
+  const [results, setResult] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/reachrge/allReachrge")
+    fetch("http://localhost:5000/api/v1/result/allResult")
       .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setRechrge(data.reachrge);
+      .then((result) => {
+        if (result.success) {
+          setResult(result.result.reverse());
         }
       });
-  }, [reachrges]);
-
+  }, [results]);
   return (
     <div>
       <h1 className="">
-        Total Reachrge Request{" "}
-        <span className=" font-medium text-gray-700"> {reachrges?.length}</span>
+        Total Result{" "}
+        <span className=" font-medium text-gray-700"> {results?.length}</span>
       </h1>
 
       <div className="mt-5 mb-40">
@@ -26,23 +25,16 @@ const Reachrge = () => {
             <thead class="bg-gray-50">
               <tr>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Pay Id
+                  Peroid No
+                </th>
+
+                <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+                  Price
                 </th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Email
+                  Win Result
                 </th>
-                <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Recharge(Point)
-                </th>
-                <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Transaction Screenshot
-                </th>
-                <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Status
-                </th>
-                <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Reacharge Now
-                </th>
+
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
                   Action
                 </th>
@@ -52,7 +44,7 @@ const Reachrge = () => {
                 ></th>
               </tr>
             </thead>
-            {<ReachrgeTable reachrges={reachrges} />}
+            {<RasultTable results={results} />}
           </table>
         </div>
       </div>
@@ -60,4 +52,4 @@ const Reachrge = () => {
   );
 };
 
-export default Reachrge;
+export default Result;

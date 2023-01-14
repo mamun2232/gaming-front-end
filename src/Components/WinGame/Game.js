@@ -8,12 +8,16 @@ const Game = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
-  const [minutes, setMinutes] = useState(parseInt(localStorage.getItem("minutes")) || 1);
-  const [seconds, setSeconds] = useState(parseInt(localStorage.getItem("seconds")) || 0);
-  const [peroid , setProid] = useState(null)
-  const [result , setResult] = useState([])
- 
-  const navigate = useNavigate()
+  const [minutes, setMinutes] = useState(
+    parseInt(localStorage.getItem("minutes")) || 1
+  );
+  const [seconds, setSeconds] = useState(
+    parseInt(localStorage.getItem("seconds")) || 0
+  );
+  const [peroid, setProid] = useState(null);
+  const [result, setResult] = useState([]);
+
+  const navigate = useNavigate();
   function closeModal() {
     setIsOpen(false);
   }
@@ -22,37 +26,31 @@ const Game = () => {
     setIsOpen(true);
   }
   useEffect(() => {
-
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
     fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
-       
         if (data.success) {
           setUser(data.user);
         }
       });
 
-      fetch("http://localhost:5000/api/v1/result/peroid")
-      .then((res) =>res.json())
+    fetch("http://localhost:5000/api/v1/result/peroid")
+      .then((res) => res.json())
       .then((result) => {
-        if(result.success){
-          setProid(result.peroid)
+        if (result.success) {
+          setProid(result.peroid);
         }
-      })
-      fetch("http://localhost:5000/api/v1/result/allResult")
-      .then((res) =>res.json())
+      });
+    fetch("http://localhost:5000/api/v1/result/allResult")
+      .then((res) => res.json())
       .then((result) => {
-        if(result.success){
-          setResult(result.result.reverse())
+        if (result.success) {
+          setResult(result.result.reverse());
         }
-      })
-     
-      
-      
-  }, [isOpen , peroid ]);
+      });
+  }, [isOpen, peroid]);
 
-console.log(user.userId);
   const gamingNumber = [
     { number: 0, color: "red" },
     { number: 1, color: "sky" },
@@ -72,30 +70,25 @@ console.log(user.userId);
     setSelectedNumber(number);
   };
   useEffect(() => {
+    const interval = setInterval(() => {
+      localStorage.setItem("seconds", seconds);
+      localStorage.setItem("minutes", minutes);
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+        //  localStorage.setItem("seconds", seconds)
+      } else if (minutes > 0) {
+        const myMinte = localStorage.getItem("minutes");
+        setMinutes(myMinte - 1);
 
-    const interval = setInterval(() =>{
-      localStorage.setItem("seconds" , seconds)
-      localStorage.setItem("minutes", minutes)
-      if(seconds > 0){
-        setSeconds( seconds - 1)
-      //  localStorage.setItem("seconds", seconds)
+        setSeconds(59);
+      } else {
+        setMinutes(parseInt(localStorage.setItem("minutes", 1)));
+        setSeconds(0);
       }
-      else if(minutes > 0){
-        const myMinte = localStorage.getItem("minutes")
-        setMinutes(myMinte - 1)
-        
-        setSeconds(59)
-      }
-      else{
-        
-        setMinutes(parseInt(localStorage.setItem("minutes" ,1)))
-        setSeconds(0)
-      }
-    } , 1000)
+    }, 1000);
 
-    return ()=> clearInterval(interval)
-  }, [minutes , seconds]);
-
+    return () => clearInterval(interval);
+  }, [minutes, seconds]);
 
   return (
     <div className="  h-full bg-base-200">
@@ -107,13 +100,19 @@ console.log(user.userId);
           </p>
 
           <div className=" mt-5 flex justify-between">
-            <button className=" w-[100px] bg-[#c7984a] px-4 rounded-lg py-2 font-medium">
+            <button
+              onClick={() => navigate("/recharge")}
+              className=" w-[100px] bg-[#c7984a] px-4 rounded-lg py-2 font-medium"
+            >
               Rechage
             </button>
             <button className="  bbg-base-200  border-[#c7984a] border  px-4 rounded-lg py-2 font-medium">
               Read Rule
             </button>
-            <button onClick={()=>navigate("/recorde")} className=" w-[100px] bg-base-200 px-4 border-[#c7984a]  border  rounded-lg py-2 font-medium">
+            <button
+              onClick={() => navigate("/recorde")}
+              className=" w-[100px] bg-base-200 px-4 border-[#c7984a]  border  rounded-lg py-2 font-medium"
+            >
               Record
             </button>
 
@@ -136,7 +135,9 @@ console.log(user.userId);
                 <span className="  text-gray-700">Count Down</span>
                 <p className=" pl-4 text-2xl">
                   {/* 03:00 */}
-                  <p id="demo">{minutes}: {seconds}</p>
+                  <p id="demo">
+                    {minutes}: {seconds}
+                  </p>
                   {/* <Countdown date={Date.now() + 360000 }
                   overtime={false}
                   /> */}
@@ -239,214 +240,35 @@ console.log(user.userId);
                   <div className="flex flex-1 items-center  h-12">
                     <p className=" font-medium text-gray-500">Period</p>
                   </div>
-                  <div className="flex items-center  h-12">
+                  <div className="flex items-center  w-[5vw] h-12">
                     <p className=" font-medium text-gray-500">Price</p>
                   </div>
-                  <div className="flex items-center  h-12">
+                  {/* <div className="flex items-center  h-12">
                     <p className=" font-medium text-gray-500">Number</p>
-                  </div>
-                  <div className="flex items-center  h-12">
+                  </div> */}
+                  <div className="flex items-center  h-12 w-[5vw]">
                     <p className=" font-medium text-gray-500">Result</p>
                   </div>
                 </div>
               </div>
               <div className=" h-10">
-
-                {
-                  result?.map(({peroid , price}) => <div key={peroid} className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">{peroid}</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">{price}</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
+                {result?.slice(0, 14).map(({ peroid, price, winResult }) => (
+                  <div key={peroid} className="flex px-4 gap-10">
+                    <div className="flex w-[80vw] items-center  h-10">
+                      <p className=" font-medium text-gray-700">{peroid}</p>
+                    </div>
+                    <div className="flex items-center w-[6vw]  h-10">
+                      <p className=" font-medium text-gray-700">{price}</p>
+                    </div>
+                    {/* <div className="flex items-center w-[3vw] h-10">
                     <p className=" font-medium text-gray-700">5</p>
+                  </div> */}
+                    <div className="flex items-center w-[2vw] h-10">
+                      <p className=" font-medium text-gray-700">{winResult}</p>
+                    </div>
                   </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>)
-                }
-
-                
+                ))}
               </div>
-              {/* <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" h-10">
-                <div className="flex px-4 gap-10">
-                  <div className="flex w-[79vw] items-center  h-10">
-                    <p className=" font-medium text-gray-700">3539089353</p>
-                  </div>
-                  <div className="flex items-center w-[3vw]  h-10">
-                    <p className=" font-medium text-gray-700">45790</p>
-                  </div>
-                  <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div>
-                  <div className="flex items-center w-[2vw] h-10">
-                    <p className=" font-medium text-gray-700">4</p>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

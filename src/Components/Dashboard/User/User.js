@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
-import ReachrgeTable from "./ReachrgeTable";
+import UserTable from "./UserTable";
 
-const Reachrge = () => {
-  const [reachrges, setRechrge] = useState([]);
+const User = () => {
+  const [users, setUser] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/reachrge/allReachrge")
+    fetch("http://localhost:5000/api/v1/user/user")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setRechrge(data.reachrge);
+          setUser(data.user.reverse());
         }
       });
-  }, [reachrges]);
-
+  }, [users]);
   return (
     <div>
       <h1 className="">
-        Total Reachrge Request{" "}
-        <span className=" font-medium text-gray-700"> {reachrges?.length}</span>
+        Total User{" "}
+        <span className=" font-medium text-gray-700"> {users?.length}</span>
       </h1>
 
       <div className="mt-5 mb-40">
@@ -26,23 +25,24 @@ const Reachrge = () => {
             <thead class="bg-gray-50">
               <tr>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Pay Id
+                  User Name
+                </th>
+                <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+                  Id
                 </th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
                   Email
                 </th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Recharge(Point)
+                  Role
                 </th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Transaction Screenshot
+                  Balance
                 </th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Status
+                  Make Admin
                 </th>
-                <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                  Reacharge Now
-                </th>
+
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">
                   Action
                 </th>
@@ -52,7 +52,7 @@ const Reachrge = () => {
                 ></th>
               </tr>
             </thead>
-            {<ReachrgeTable reachrges={reachrges} />}
+            {<UserTable users={users} />}
           </table>
         </div>
       </div>
@@ -60,4 +60,4 @@ const Reachrge = () => {
   );
 };
 
-export default Reachrge;
+export default User;

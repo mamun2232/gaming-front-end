@@ -19,6 +19,9 @@ import AdminWithdrow from "./Components/Dashboard/Withdrow/Withdrow";
 import Recode from "./Components/Home/Recode";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Reachrge from "./Components/Dashboard/Recharge/Reachrge";
+import Result from "./Components/Dashboard/Result/Result";
+import User from "./Components/Dashboard/User/User";
+import RequreAdmin from "./Components/Authentication/RequreAdmin";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -54,16 +57,54 @@ function App() {
               </RequreAuth>
             }
           >
-            <Route index element={<Game />}></Route>
+            <Route index element={
+              <RequreAuth>
+                <RequreAdmin>
+                <Game />
+                </RequreAdmin>
+              </RequreAuth>
+            }></Route>
             <Route
               path="/dashboard/gamerDetails/:id"
-              element={<GamerDetails />}
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                  <GamerDetails />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
             ></Route>
             <Route
               path="/dashboard/withdrow"
-              element={<AdminWithdrow />}
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                  <AdminWithdrow />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
             ></Route>
-            <Route path="/dashboard/reachrge" element={<Reachrge />}></Route>
+            <Route path="/dashboard/reachrge" element={
+              <RequreAuth>
+                <RequreAdmin>
+                <Reachrge />
+                </RequreAdmin>
+              </RequreAuth>
+            }></Route>
+            <Route path="/dashboard/allResult" element={
+              <RequreAuth>
+                <RequreAdmin>
+                <Result />
+                </RequreAdmin>
+              </RequreAuth>
+            }></Route>
+            <Route path="/dashboard/user" element={
+              <RequreAuth>
+                <RequreAdmin>
+                <User />
+                </RequreAdmin>
+              </RequreAuth>
+            }></Route>
           </Route>
           <Route path="/withdrow" element={<Withdrow />} />
           <Route path="/recharge" element={<Recharge />} />

@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TfiGame } from "react-icons/tfi";
 import { CgProfile } from "react-icons/cg";
 import { RxDashboard } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useAdmin from "../Authentication/useAdmin";
 const BottomNavigation = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
+  const [chackUser, setCheckUser] = useState({});
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
+
+    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setCheckUser(data.user);
+        }
+      });
+  }, []);
+
+  const [admin] = useAdmin(chackUser);
+
   return (
-    <div className="btm-nav bg-white border shadow-lg  h-14">
-      <button onClick={() => navigate("/")}>
+    <div className="btm-nav bg-white border shadow-lg  h-18">
+      <NavLink
+        to="/"
+        className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -25,7 +45,7 @@ const BottomNavigation = () => {
           />
         </svg>
         <span className="btm-nav-label">Home</span>
-      </button>
+      </NavLink>
       {/* <button className="activ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,25 +63,37 @@ const BottomNavigation = () => {
         </svg>
         <span className="btm-nav-label">Warnings</span>
       </button> */}
-      {user !== null && <button onClick={() => navigate("/win")}>
-        <span className="text-xl">
-          <TfiGame />
-        </span>
-        <span className="btm-nav-label">Win</span>
-      </button>
-}
-      <button onClick={() => navigate("/myProfile")}>
+      {user !== null && (
+        <NavLink
+          to="/win"
+          className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
+        >
+          <span className="text-xl">
+            <TfiGame />
+          </span>
+          <span className="btm-nav-label">Win</span>
+        </NavLink>
+      )}
+      <NavLink
+        to="/myProfile"
+        className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
+      >
         <span className="text-xl">
           <CgProfile />
         </span>
         <span className="btm-nav-label">My profile</span>
-      </button>
-      <button onClick={() => navigate("/dashboard")}>
-        <span className="text-xl">
-          <RxDashboard/>
-        </span>
-        <span className="btm-nav-label">Dashboard</span>
-      </button>
+      </NavLink>
+      {admin && (
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
+        >
+          <span className="text-xl">
+            <RxDashboard />
+          </span>
+          <span className="btm-nav-label">Dashboard</span>
+        </NavLink>
+      )}
     </div>
   );
 };

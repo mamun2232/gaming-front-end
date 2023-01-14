@@ -22,20 +22,18 @@ const ProfileSection = () => {
   const navigate = useNavigate();
   const disPatch = useDispatch();
   useEffect(() => {
-    console.log(localStorage.getItem("gamingUser"));
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
     fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         if (data.success) {
           setUser(data.user);
         }
       });
   }, []);
 
-  console.log(user);
-
+ 
   return (
     <div className=" bg-base-200">
       <div className=" pt-4 px-4">

@@ -14,13 +14,54 @@ const DashboardItem = () => {
         <ul className="menu p-4 w-64 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
-            <NavLink to="/dashboard">Game Win</NavLink>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                isActive ? "bg-[#ff4019] text-white" : ""
+              }
+            >
+              Game Win
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/withdrow">Withdrow</NavLink>
+            <NavLink
+              to="/dashboard/withdrow"
+              className={({ isActive }) =>
+                isActive ? "bg-[#ff4019] text-white" : ""
+              }
+            >
+              Withdrow
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/reachrge">Reachrge</NavLink>
+            <NavLink
+              to="/dashboard/reachrge"
+              className={({ isActive }) =>
+                isActive ? "bg-[#ff4019] text-white" : ""
+              }
+            >
+              Reachrge
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/allResult"
+              className={({ isActive }) =>
+                isActive ? "bg-[#ff4019] text-white" : ""
+              }
+            >
+              Game Results
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/user"
+              className={({ isActive }) =>
+                isActive ? "bg-[#ff4019] text-white" : ""
+              }
+            >
+              User List
+            </NavLink>
           </li>
         </ul>
       </div>
