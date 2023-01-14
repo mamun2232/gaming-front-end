@@ -17,9 +17,13 @@ import Game from "./Components/Dashboard/Game";
 import GamerDetails from "./Components/Dashboard/GamerDetails";
 import AdminWithdrow from "./Components/Dashboard/Withdrow/Withdrow";
 import Recode from "./Components/Home/Recode";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient()
 function App() {
+ 
   return (
     <div className="w-[100vw] h-[100vh]">
+      <QueryClientProvider client={queryClient}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recorde" element={<Recode />} />
@@ -54,6 +58,7 @@ function App() {
       />
       {/* Same as */}
       <ToastContainer />
+      </QueryClientProvider>
     </div>
   );
 }
