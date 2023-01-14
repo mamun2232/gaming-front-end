@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
-import WithdrowTable from "./WithdrowTable";
+import React, { useEffect, useState } from 'react';
+import ReachrgeTable from './ReachrgeTable';
 
-const Withdrow = () => {
-  const [withdrows, setWithdrow] = useState([]);
+const Reachrge = () => {
+      const [reachrges, setRechrge] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/withdrow/allWithdrow")
+    fetch("http://localhost:5000/api/v1/reachrge/allReachrge")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setWithdrow(data.withdrow);
+          setRechrge(data.reachrge);
         }
       });
-  }, [withdrows]);
-
-
-
-  return (
-    <div>
+  }, [reachrges]);
+  console.log(reachrges)
+      return (
+            <div>
       <h1 className="">
-        Total Withdrow Request{" "}
-        <span className=" font-medium text-gray-700"> {withdrows?.length}</span>
+        Total Reachrge Request{" "}
+        <span className=" font-medium text-gray-700"> {reachrges?.length}</span>
       </h1>
 
       <div className="mt-5">
@@ -34,13 +32,13 @@ const Withdrow = () => {
              Email
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-             Withdrow(amount)
+            Recharge(Point)
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-             Status
+            Transaction Screenshot
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-             Paid Now
+             Reacharge Now
             </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">
              Action
@@ -49,14 +47,14 @@ const Withdrow = () => {
           </tr>
         </thead>
          {
-            <WithdrowTable withdrows={withdrows}/>
+            <ReachrgeTable reachrges={reachrges}/>
          }
       </table>
     </div>
 
       </div>
     </div>
-  );
+      );
 };
 
-export default Withdrow;
+export default Reachrge;

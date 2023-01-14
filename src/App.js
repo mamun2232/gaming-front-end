@@ -18,46 +18,74 @@ import GamerDetails from "./Components/Dashboard/GamerDetails";
 import AdminWithdrow from "./Components/Dashboard/Withdrow/Withdrow";
 import Recode from "./Components/Home/Recode";
 import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient()
+import Reachrge from "./Components/Dashboard/Recharge/Reachrge";
+const queryClient = new QueryClient();
 function App() {
- 
   return (
     <div className="w-[100vw] h-[100vh]">
       <QueryClientProvider client={queryClient}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recorde" element={<Recode />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Reg />} />
-        <Route path="/win" element={<RequreAuth><Win /></RequreAuth>} />
-        <Route path="/myProfile" element={<RequreAuth><MyProfile /></RequreAuth>} />
-        <Route path="/dashboard" element={<RequreAuth> <Dashboard>
-         </Dashboard></RequreAuth>} >
-         <Route index element={<Game/>}></Route>
-         <Route path="/dashboard/gamerDetails/:id" element={<GamerDetails/>}></Route>
-         <Route path="/dashboard/withdrow" element={<AdminWithdrow   />}></Route>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recorde" element={<Recode />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Reg />} />
+          <Route
+            path="/win"
+            element={
+              <RequreAuth>
+                <Win />
+              </RequreAuth>
+            }
+          />
+          <Route
+            path="/myProfile"
+            element={
+              <RequreAuth>
+                <MyProfile />
+              </RequreAuth>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <RequreAuth>
+                {" "}
+                <Dashboard></Dashboard>
+              </RequreAuth>
+            }
+          >
+            <Route index element={<Game />}></Route>
+            <Route
+              path="/dashboard/gamerDetails/:id"
+              element={<GamerDetails />}
+            ></Route>
+            <Route
+              path="/dashboard/withdrow"
+              element={<AdminWithdrow />}
+            ></Route>
+            <Route path="/dashboard/reachrge" element={<Reachrge />}></Route>
           </Route>
-        <Route path="/withdrow" element={<Withdrow />} />
-        <Route path="/recharge" element={<Recharge />} />
-        <Route path="/gift" element={<Gift />} />
-        <Route path="/restPassword" element={<ResetPassword />} />
-      </Routes>
+          <Route path="/withdrow" element={<Withdrow />} />
+          <Route path="/recharge" element={<Recharge />} />
+          <Route path="/gift" element={<Gift />} />
+          <Route path="/restPassword" element={<ResetPassword />} />
+        </Routes>
 
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        limit={1}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      {/* Same as */}
-      <ToastContainer />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          limit={1}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {/* Same as */}
+        <ToastContainer />
       </QueryClientProvider>
     </div>
   );

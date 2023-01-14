@@ -7,8 +7,7 @@ const DashboardItem = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content px-8 mt-5">
         {/* <!-- Page content here --> */}
-        <Outlet/>
-
+        <Outlet />
       </div>
       <div className="drawer-side  bg-base-200 border h-[80vh]">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -18,8 +17,10 @@ const DashboardItem = () => {
             <NavLink to="/dashboard">Game Win</NavLink>
           </li>
           <li>
-          <NavLink to="/dashboard/withdrow">Game Win</NavLink>
-
+            <NavLink to="/dashboard/withdrow">Withdrow</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/reachrge">Reachrge</NavLink>
           </li>
         </ul>
       </div>

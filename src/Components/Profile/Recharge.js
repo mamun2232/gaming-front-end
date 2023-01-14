@@ -4,10 +4,13 @@ import { useForm } from "react-hook-form";
 import { CgSmartphone } from "react-icons/cg";
 import { TiDelete } from "react-icons/ti";
 import { MdAddPhotoAlternate } from "react-icons/md";
+import axios from "axios";
+import { toast } from "react-toastify";
 const Recharge = () => {
   const [user, setUser] = useState({});
   const [screenshot, setScreenshot] = useState(undefined);
   const [screenshotErrorMessage, setSMessge] = useState("");
+  const [errorMassage, setErrorMessage] = useState("");
   const {
     register,
     reset,
@@ -41,8 +44,48 @@ const Recharge = () => {
       return setSMessge("Screenshot is Required");
     }
     setSMessge("");
+    setErrorMessage("");
+    const myForm = new FormData();
+    myForm.append("password", password);
+    myForm.append("PayId", PayId);
+    myForm.append("email", email);
+    myForm.append("RechargeAmoun", RechargeAmoun);
+
+    myForm.append("images", screenshot);
+    await axios({
+      method: "post",
+      url: "http://localhost:5000/api/v1/reachrge/reachrge",
+      data: myForm,
+      headers: {
+        "Content-Type": "multipart/form-data",
+        authorization: `Bearer ${localStorage.getItem("UserToken")}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.data.success) {
+          reset();
+          toast.success(res.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        } else {
+          setErrorMessage(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  console.log(screenshot);
+
+  console.log(errorMassage);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="bg-base-200 ">
@@ -257,9 +300,9 @@ const Recharge = () => {
               <input
                 className="  w-full outline-none h-12   bg-[#c7984a] mt-5 text-lg px-16 shadow-sm rounded-lg"
                 type="submit"
-                value="Withdrow"
+                value="Reachrge"
               />
-              {/* <p className=" text-red-500">{errorMassage}</p> */}
+              <p className=" text-red-500">{errorMassage}</p>
             </div>
           </div>
         </div>
