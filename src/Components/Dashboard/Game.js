@@ -22,12 +22,10 @@ const Game = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.success) {
-            
                 setFacebook(data.facebook);
                 setTikTok(data.tiktok);
                 const facebookArray = data?.facebook?.map((face) => face.money);
                 const tiktokArray = data?.tiktok?.map((face) => face.money);
-                
 
                 if (tiktokArray !== 0) {
                   setTiktkAmoun(tiktokArray.reduce((a, b) => a + b));
@@ -76,7 +74,6 @@ const Game = () => {
             .then((res) => res.json())
             .then((result) => {
               if (result.success) {
-               
                 toast.success(result.message, {
                   position: "top-right",
                   autoClose: 5000,
@@ -111,7 +108,7 @@ const Game = () => {
           setReFetch(true);
           const peroidResult = {
             peroid: peroid,
-            price: facebookAmoun,
+            price: tiktokAmoun,
             winResult: "Tiktok",
           };
           fetch("http://localhost:5000/api/v1/result/results", {

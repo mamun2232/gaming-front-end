@@ -22,6 +22,7 @@ const BottomNavigation = () => {
   }, [user]);
 
   const [admin] = useAdmin(chackUser);
+  console.log(admin);
 
   return (
     <div className="btm-nav bg-white border shadow-lg  h-18">
@@ -82,7 +83,7 @@ const BottomNavigation = () => {
         </span>
         <span className="btm-nav-label">My profile</span>
       </NavLink>
-      {user.role === "Admin" && (
+      {admin && (
         <NavLink
           to="/dashboard"
           className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}

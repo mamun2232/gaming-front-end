@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Navigate, useLocation } from "react-router-dom";
 import { logOut } from "../../app/slice/authSlice";
-// import Loading from "../Utilitis/Loading";
+import Loading from "../Utilites/Loading";
 import useAdmin from "./useAdmin";
 
 const RequreAdmin = ({ children }) => {
   const [user, setUser] = useState({});
-  // const [admin, adminLoading] = useAdmin(user.email);
+  const [admin, adminLoading] = useAdmin(user);
   const users = useSelector((state) => state.user.user);
   const location = useLocation();
   const disPatch = useDispatch();
@@ -24,11 +24,11 @@ const RequreAdmin = ({ children }) => {
       });
   }, [user]);
 
-  // if(lodaing || adminLoading){
-  //       return <Loading></Loading>
-  // }
+  if (adminLoading) {
+    return <Loading></Loading>;
+  }
 
-  if (!user.role == "Admin" || users == null) {
+  if (user == null || !admin) {
     //     disPatch(logOut());
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

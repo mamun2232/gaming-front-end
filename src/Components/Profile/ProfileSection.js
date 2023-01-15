@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../app/slice/authSlice";
 import axios from "axios";
 import Loading from "../Utilites/Loading";
+import ChangeNameModal from "./ChangeNameModal";
 const ProfileSection = () => {
   const [wallet, setWallet] = useState(false);
   const [report, setRepot] = useState(false);
@@ -23,6 +24,8 @@ const ProfileSection = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const disPatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+  const [changeName , setChangeName] = useState(false)
   useEffect(() => {
     setLoading(true);
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
@@ -34,7 +37,14 @@ const ProfileSection = () => {
           setLoading(false);
         }
       });
-  }, []);
+  }, [changeName]);
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   return (
     <div className=" bg-base-200">
@@ -74,7 +84,10 @@ const ProfileSection = () => {
               >
                 Rechage
               </button>
-              <button className="  bg-base-200  border-[#c7984a]  border-2 px-4 rounded-lg py-2 ">
+              <button
+                onClick={() => openModal()}
+                className="  bg-base-200  border-[#c7984a]  border-2 px-4 rounded-lg py-2 "
+              >
                 Change Nick Name
               </button>
             </div>
@@ -273,6 +286,13 @@ const ProfileSection = () => {
           </div>
         </div>
       )}
+
+      {isOpen && <ChangeNameModal 
+      closeModal={closeModal}
+      userId={user?._id}
+      setChangeName={setChangeName}
+      isOpen={isOpen} />
+      }
     </div>
   );
 };

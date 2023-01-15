@@ -119,7 +119,7 @@ const GamingModal = ({
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+         
           if (data.success) {
             toast.success(data.message, {
               position: "top-right",
