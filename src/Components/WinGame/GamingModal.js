@@ -16,6 +16,7 @@ const GamingModal = ({
   const [selectedMoney, setSelectedMoney] = useState(10);
   // const [totalMoney , setTotalMoney] = useState(10)
   const [quantity, setQuantity] = useState(1);
+  const [agree, setAgree] = useState(false);
   const contractMoney = [
     { money: 10 },
     { money: 100 },
@@ -148,6 +149,7 @@ const GamingModal = ({
     }
   };
 
+  
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -245,7 +247,13 @@ const GamingModal = ({
                             </span>
                           </p>
                           <div className=" mt-2">
-                            <input className="" type="checkbox" name="" id="" />
+                            <input
+                              onClick={() => setAgree(!agree)}
+                              className=""
+                              type="checkbox"
+                              name=""
+                              id=""
+                            />
                             <span className="px-3 ">
                               I agree{" "}
                               <span
@@ -267,8 +275,12 @@ const GamingModal = ({
                         </div>
                         <div className="w-full flex justify-center uppercase  items-center">
                           <button
+                          disabled={!agree}
                             onClick={() => confrimGameStartHandler()}
                             className={`${
+                              agree == false ? color === "sky"
+                              ? "text-blue-200"
+                              : "text-red-200" :
                               color === "sky"
                                 ? "text-[#2374e1]"
                                 : "text-[#ff4019]"

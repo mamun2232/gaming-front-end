@@ -14,9 +14,9 @@ const UserTable = ({ users }) => {
       });
   }, []);
 
-  console.log(admin);
+  
   const adminRequestHendler = (email, role) => {
-    console.log(email);
+  
     fetch(
       `http://localhost:5000/api/v1/user/admin/${email}?admin=${admin.email}`,
       {

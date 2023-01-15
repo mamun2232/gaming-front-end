@@ -21,12 +21,7 @@ const BottomNavigation = () => {
       });
   }, [user]);
 
-
-
   const [admin] = useAdmin(chackUser);
- 
-  
-  console.log(user.role);
 
   return (
     <div className="btm-nav bg-white border shadow-lg  h-18">
@@ -87,19 +82,17 @@ const BottomNavigation = () => {
         </span>
         <span className="btm-nav-label">My profile</span>
       </NavLink>
-     {
-      user.role === "Admin" && <NavLink
-      to="/dashboard"
-      className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
-    >
-      <span className="text-xl">
-        <RxDashboard />
-      </span>
-      <span className="btm-nav-label">Dashboard</span>
-    </NavLink>
-     }
-        
-    
+      {user.role === "Admin" && (
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
+        >
+          <span className="text-xl">
+            <RxDashboard />
+          </span>
+          <span className="btm-nav-label">Dashboard</span>
+        </NavLink>
+      )}
     </div>
   );
 };
