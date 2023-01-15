@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Navigate, useLocation } from "react-router-dom";
 import { logOut } from "../../app/slice/authSlice";
@@ -7,8 +7,9 @@ import { logOut } from "../../app/slice/authSlice";
 import useAdmin from "./useAdmin";
 
 const RequreAdmin = ({ children }) => {
-  const [user, setUser] = useState();
-  const [admin, adminLoading] = useAdmin(user);
+  const [user, setUser] = useState({});
+  // const [admin, adminLoading] = useAdmin(user.email);
+  const users = useSelector((state) => state.user.user);
   const location = useLocation();
   const disPatch = useDispatch();
   useEffect(() => {
@@ -21,14 +22,14 @@ const RequreAdmin = ({ children }) => {
           setUser(data.user);
         }
       });
-  }, []);
+  }, [user]);
 
   // if(lodaing || adminLoading){
   //       return <Loading></Loading>
   // }
 
-  if (!user || !admin) {
-//     disPatch(logOut());
+  if (!user.role == "Admin" || users == null) {
+    //     disPatch(logOut());
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

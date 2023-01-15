@@ -51,7 +51,7 @@ const Facebook = ({ gamingUser }) => {
               <td class="px-6 py-4">
                 <div class="flex ">
                   <span
-                  onClick={()=> navigate(`/dashboard/gamerDetails/${user?.userIdNumber}`)}
+                  // onClick={()=> navigate(`/dashboard/gamerDetails/${user?.userIdNumber}`)}
                     class={`${
                       user?.gameName === "facebook"
                         ? "bg-blue-50 text-blue-600 "

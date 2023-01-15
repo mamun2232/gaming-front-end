@@ -12,7 +12,6 @@ const BottomNavigation = () => {
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
-
     fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -20,9 +19,14 @@ const BottomNavigation = () => {
           setCheckUser(data.user);
         }
       });
-  }, []);
+  }, [user]);
+
+
 
   const [admin] = useAdmin(chackUser);
+ 
+  
+  console.log(user.role);
 
   return (
     <div className="btm-nav bg-white border shadow-lg  h-18">
@@ -83,17 +87,19 @@ const BottomNavigation = () => {
         </span>
         <span className="btm-nav-label">My profile</span>
       </NavLink>
-      {admin && (
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
-        >
-          <span className="text-xl">
-            <RxDashboard />
-          </span>
-          <span className="btm-nav-label">Dashboard</span>
-        </NavLink>
-      )}
+     {
+      user.role === "Admin" && <NavLink
+      to="/dashboard"
+      className={({ isActive }) => (isActive ? "text-[#ff4019] " : "")}
+    >
+      <span className="text-xl">
+        <RxDashboard />
+      </span>
+      <span className="btm-nav-label">Dashboard</span>
+    </NavLink>
+     }
+        
+    
     </div>
   );
 };

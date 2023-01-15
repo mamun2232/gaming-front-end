@@ -8,6 +8,7 @@ const Game = () => {
   const [facebookAmoun, setFacebookAmoun] = useState(0);
   const [tiktok, setTikTok] = useState([]);
   const [tiktokAmoun, setTiktkAmoun] = useState(0);
+  const [reFetch, setReFetch] = useState(false);
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/result/peroid")
       .then((res) => res.json())
@@ -33,17 +34,14 @@ const Game = () => {
                 if (facebookArray !== 0) {
                   setFacebookAmoun(facebookArray.reduce((a, b) => a + b));
                 }
-              }
-              else{
-                setFacebook([])
-                setTikTok([])
+              } else {
+                setFacebook([]);
+                setTikTok([]);
               }
             });
         }
       });
-  }, []);
-
-
+  }, [reFetch]);
 
   const facebookWinHendler = () => {
     const facebookMap = facebook.map(({ userId, money }) => {
@@ -60,6 +58,7 @@ const Game = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
+          setReFetch(true);
           const peroidResult = {
             peroid: peroid,
             price: facebookAmoun,
@@ -107,6 +106,7 @@ const Game = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
+          setReFetch(true);
           const peroidResult = {
             peroid: peroid,
             price: facebookAmoun,
@@ -211,13 +211,10 @@ const Game = () => {
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-2  gap-5">
         <div className="   ">
           <Facebook gamingUser={facebook} />
-
-        </div> 
-        <div className="">
-        <Facebook gamingUser={tiktok}/>
         </div>
-       
-
+        <div className="">
+          <Facebook gamingUser={tiktok} />
+        </div>
       </div>
     </div>
   );

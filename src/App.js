@@ -22,6 +22,8 @@ import Reachrge from "./Components/Dashboard/Recharge/Reachrge";
 import Result from "./Components/Dashboard/Result/Result";
 import User from "./Components/Dashboard/User/User";
 import RequreAdmin from "./Components/Authentication/RequreAdmin";
+import Contect from "./Components/Profile/Contect";
+import ContectD from "./Components/Dashboard/Contect/Contect";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -53,23 +55,28 @@ function App() {
             element={
               <RequreAuth>
                 {" "}
-                <Dashboard></Dashboard>
+                <RequreAdmin>
+                  <Dashboard></Dashboard>
+                </RequreAdmin>
               </RequreAuth>
             }
           >
-            <Route index element={
-              <RequreAuth>
-                <RequreAdmin>
-                <Game />
-                </RequreAdmin>
-              </RequreAuth>
-            }></Route>
+            <Route
+              index
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <Game />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            ></Route>
             <Route
               path="/dashboard/gamerDetails/:id"
               element={
                 <RequreAuth>
                   <RequreAdmin>
-                  <GamerDetails />
+                    <GamerDetails />
                   </RequreAdmin>
                 </RequreAuth>
               }
@@ -79,34 +86,54 @@ function App() {
               element={
                 <RequreAuth>
                   <RequreAdmin>
-                  <AdminWithdrow />
+                    <AdminWithdrow />
                   </RequreAdmin>
                 </RequreAuth>
               }
             ></Route>
-            <Route path="/dashboard/reachrge" element={
-              <RequreAuth>
-                <RequreAdmin>
-                <Reachrge />
-                </RequreAdmin>
-              </RequreAuth>
-            }></Route>
-            <Route path="/dashboard/allResult" element={
-              <RequreAuth>
-                <RequreAdmin>
-                <Result />
-                </RequreAdmin>
-              </RequreAuth>
-            }></Route>
-            <Route path="/dashboard/user" element={
-              <RequreAuth>
-                <RequreAdmin>
-                <User />
-                </RequreAdmin>
-              </RequreAuth>
-            }></Route>
+            <Route
+              path="/dashboard/reachrge"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <Reachrge />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            ></Route>
+            <Route
+              path="/dashboard/allResult"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <Result />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            ></Route>
+            <Route
+              path="/dashboard/user"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <User />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            ></Route>
+            <Route
+              path="/dashboard/contect"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <ContectD />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            ></Route>
           </Route>
           <Route path="/withdrow" element={<Withdrow />} />
+          <Route path="/contect&help" element={<Contect />} />
           <Route path="/recharge" element={<Recharge />} />
           <Route path="/gift" element={<Gift />} />
           <Route path="/restPassword" element={<ResetPassword />} />

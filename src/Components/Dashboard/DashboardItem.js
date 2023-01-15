@@ -63,6 +63,16 @@ const DashboardItem = () => {
               User List
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/dashboard/contect"
+              className={({ isActive }) =>
+                isActive ? "bg-[#ff4019] text-white" : ""
+              }
+            >
+              All Contect List
+            </NavLink>
+          </li>
         </ul>
       </div>
     </div>

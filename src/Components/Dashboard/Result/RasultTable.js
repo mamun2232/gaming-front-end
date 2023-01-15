@@ -1,9 +1,30 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const RasultTable = ({ results }) => {
+  const deleteHundler = (id) => {
+    fetch(`http://localhost:5000/api/v1/result/result/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.success(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+      });
+  };
   return (
     <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-      {results?.map(({ peroid, price, winResult }) => (
+      {results?.map(({ peroid, price, winResult, _id }) => (
         <tr class="hover:bg-gray-50">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
             {peroid}
@@ -19,7 +40,10 @@ const RasultTable = ({ results }) => {
 
           <td class="px-6 py-4">
             <div>
-              <a x-data="{ tooltip: 'Delete' }" href="#">
+              <a
+                onClick={() => deleteHundler(_id)}
+                x-data="{ tooltip: 'Delete' }"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

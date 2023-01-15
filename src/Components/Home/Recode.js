@@ -16,14 +16,14 @@ const Recode = () => {
     fetch(`http://localhost:5000/api/v1/game/record/${userInfo?.userId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+  
         if (data.success) {
           setRecord(data.record.reverse());
         }
       });
-  }, []);
+  }, [record]);
 
-  console.log(record);
+  
   return (
     <div className="bg-base-200 h-screen">
       <div className=" h-12  w-full bg-white flex justify-center items-center">

@@ -26,14 +26,12 @@ const ProfileSection = () => {
     fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
-       
         if (data.success) {
           setUser(data.user);
         }
       });
   }, []);
 
- 
   return (
     <div className=" bg-base-200">
       <div className=" pt-4 px-4">
@@ -63,7 +61,10 @@ const ProfileSection = () => {
           </div>
 
           <div className=" flex justify-around mt-3">
-            <button className=" w-[100px] bg-[#c7984a] px-4 rounded-lg py-2 ">
+            <button
+              onClick={() => navigate("/recharge")}
+              className=" w-[100px] bg-[#c7984a] px-4 rounded-lg py-2 "
+            >
               Rechage
             </button>
             <button className="  bg-base-200  border-[#c7984a]  border-2 px-4 rounded-lg py-2 ">
@@ -184,7 +185,21 @@ const ProfileSection = () => {
               </div>
             </>
           )}
-          <div className="h-12 border-b flex justify-between">
+          <div
+            onClick={() => navigate("/contect&help")}
+            className="h-12 border-b flex justify-between cursor-pointer"
+          >
+            <p className=" flex  items-center text-md font-med text-gray-900">
+              <span className="pr-2 text-[#6739b6]">
+                <GrAppsRounded />
+              </span>
+              Contect And Help
+            </p>
+            <span className=" flex  items-center text-xl">
+              <FaRegArrowAltCircleRight />
+            </span>
+          </div>
+          {/* <div className="h-12 border-b flex justify-between">
             <p className=" flex  items-center text-md font-med text-gray-900">
               <span className="pr-2 text-[#6739b6]">
                 <GrAppsRounded />
@@ -194,7 +209,7 @@ const ProfileSection = () => {
             <span className=" flex  items-center text-xl">
               <FaRegArrowAltCircleRight />
             </span>
-          </div>
+          </div> */}
           <div
             onClick={() => setAbout(!about)}
             className="h-12 border-b flex justify-between"

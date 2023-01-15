@@ -8,7 +8,7 @@ const Result = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setResult(result.result.reverse());
+          setResult(result.result);
         }
       });
   }, [results]);

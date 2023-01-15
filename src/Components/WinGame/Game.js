@@ -30,6 +30,7 @@ const Game = () => {
     fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.success) {
           setUser(data.user);
         }
@@ -64,6 +65,7 @@ const Game = () => {
     { number: 9, color: "sky" },
   ];
 
+  console.log(user);
   const gameStartHendeler = (number, color) => {
     openModal();
     setSelectedColor(color);

@@ -1,61 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { toast } from "react-toastify";
 
-const UserTable = ({ users }) => {
-  const [admin, setAdmin] = useState({});
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
-    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setAdmin(data.user);
-        }
-      });
-  }, []);
-
-  console.log(admin);
-  const adminRequestHendler = (email, role) => {
-    console.log(email);
-    fetch(
-      `http://localhost:5000/api/v1/user/admin/${email}?admin=${admin.email}`,
-      {
-        method: "PUT",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("gamingToken")}`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          toast.success(data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        } else {
-          toast.warn(data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        }
-      });
-  };
-
+const ContectTable = ({ contects }) => {
   const deleteHundler = (id) => {
-    fetch(`http://localhost:5000/api/v1/user/user/${id}`, {
+    fetch(`http://localhost:5000/api/v1/contect/contect/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -76,43 +24,36 @@ const UserTable = ({ users }) => {
   };
   return (
     <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-      {users?.map(({ name, email, userId, balance, role, _id }) => (
+      {contects?.map(({ name, email, phone, subject, message, _id }) => (
         <tr class="hover:bg-gray-50">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">{name}</th>
           <td class="px-6 py-4">
             <span
               class={`bg-red-50 text-[#ff4019] inline-flex items-center gap-1 rounded-full  px-2 py-1 text-xs font-semibold`}
             >
-              {userId}
+              {email}
             </span>
           </td>
-          <td class="px-6 py-4">{email}</td>
+          <td class="px-6 py-4">{phone}</td>
           <td class="px-6 py-4">
             <div class="flex ">
               <span
                 class={`bg-red-50 text-[#ff4019] inline-flex items-center gap-1 rounded-full  px-2 py-1 text-xs font-semibold`}
               >
-                {role}
+                {subject}
               </span>
             </div>
           </td>
           <td class="px-6 py-4">
             <div class="flex ">
               <span
-                class={` bg-blue-50 text-[#2374e1] inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold  cursor-pointer`}
+                class={`bg-blue-50 text-[#2374e1] inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold  cursor-pointer`}
               >
-                {balance}
+                {message}
               </span>
             </div>
           </td>
-          <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-            <span
-              onClick={() => adminRequestHendler(email, role)}
-              className="px-4 py-[3px] rounded-lg bg-[#2374e1] text-white cursor-pointer"
-            >
-              Admin Now
-            </span>
-          </th>
+
           <td class="px-6 py-4">
             <div>
               <button
@@ -143,4 +84,4 @@ const UserTable = ({ users }) => {
   );
 };
 
-export default UserTable;
+export default ContectTable;
