@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 const ContectTable = ({ contects }) => {
   const deleteHundler = (id) => {
-    fetch(`http://localhost:5000/api/v1/contect/contect/${id}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/contect/contect/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

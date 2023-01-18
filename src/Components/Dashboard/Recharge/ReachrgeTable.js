@@ -20,7 +20,7 @@ const ReachrgeTable = ({ reachrges }) => {
   };
 
   const reachrgeHendler = (id, email, RechargeAmoun) => {
-    fetch(`http://localhost:5000/api/v1/reachrge/reachrge`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/reachrge/reachrge`, {
       method: "PUT",
       body: JSON.stringify({
         id: id,
@@ -49,9 +49,8 @@ const ReachrgeTable = ({ reachrges }) => {
       });
   };
 
-
   const deleteHundler = (id) => {
-    fetch(`http://localhost:5000/api/v1/reachrge/reachrge/${id}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/reachrge/reachrge/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -82,7 +81,7 @@ const ReachrgeTable = ({ reachrges }) => {
               <span
                 class={`bg-red-50 text-[#ff4019] inline-flex items-center gap-1 rounded-full  px-2 py-1 text-xs font-semibold`}
               >
-                {email}
+                {email ? email : "No Email"}
               </span>
             </td>
             <td class="px-6 py-4">{RechargeAmoun} Point</td>
@@ -119,7 +118,10 @@ const ReachrgeTable = ({ reachrges }) => {
             </th>
             <td class="px-6 py-4">
               <div>
-                <button onClick={()=>deleteHundler(_id)} x-data="{ tooltip: 'Delete' }"  >
+                <button
+                  onClick={() => deleteHundler(_id)}
+                  x-data="{ tooltip: 'Delete' }"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

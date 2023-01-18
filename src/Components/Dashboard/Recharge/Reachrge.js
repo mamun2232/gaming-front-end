@@ -4,11 +4,11 @@ import ReachrgeTable from "./ReachrgeTable";
 const Reachrge = () => {
   const [reachrges, setRechrge] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/reachrge/allReachrge")
+    fetch("https://gaming-backend.vercel.app/api/v1/reachrge/allReachrge")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setRechrge(data.reachrge);
+          setRechrge(data.reachrge.reverse());
         }
       });
   }, [reachrges]);

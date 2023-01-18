@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 const RasultTable = ({ results }) => {
   const deleteHundler = (id) => {
-    fetch(`http://localhost:5000/api/v1/result/result/${id}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/result/result/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

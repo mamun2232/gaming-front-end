@@ -13,13 +13,19 @@ import { registerUser } from "../../app/slice/authSlice";
 const PhoneRegister = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
+  const [agree , setAgree] = useState(false)
+  
 
   const {
     register,
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+  } = useForm({
+    defaultValues:{
+      number:91
+    }
+  });
   const disPatch = useDispatch();
 
   const onSubmit = async ({
@@ -153,7 +159,8 @@ const PhoneRegister = () => {
         </div>
 
         <input
-          className="  w-full outline-none h-12   font-medium  bg-[#c7984a] mt-5 text-lg px-16 shadow-sm rounded-lg"
+         disabled={!agree}
+          className={`${agree ==false ? " bg-[#fdba74]": "bg-[#c7984a]"} w-full outline-none h-12   font-medium   mt-5 text-lg px-16 shadow-sm rounded-lg`}
           type="submit"
           value="Register"
         />
@@ -172,7 +179,7 @@ const PhoneRegister = () => {
           </p>
 
           <div className=" mt-2">
-            <input type="checkbox" name="" id="" />
+            <input onClick={()=>setAgree(!agree)} type="checkbox" name="" id="" />
             <span className="px-3 ">
               I agree{" "}
               <span className="text-[#c7984a] cursor-pointer uppercase">

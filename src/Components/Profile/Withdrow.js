@@ -11,7 +11,7 @@ const Withdrow = () => {
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
 
-    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+    fetch(`https://gaming-backend.vercel.app/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -50,7 +50,7 @@ const Withdrow = () => {
       });
     }
     setErrorMessage("");
-    fetch("http://localhost:5000/api/v1/withdrow/withdrow", {
+    fetch("https://gaming-backend.vercel.app/api/v1/withdrow/withdrow", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -58,7 +58,8 @@ const Withdrow = () => {
       body: JSON.stringify({
         password,
         PayId,
-        email,
+        email: user?.email,
+        optionalEmail: email,
         withdrowAmoun,
       }),
     })
@@ -184,25 +185,14 @@ const Withdrow = () => {
               <div>
                 <div className=" h-12 relative mt-2">
                   <input
-                    {...register("email", {
-                      required: {
-                        value: true,
-                        message: "email is Required",
-                      },
-                    })}
+                    {...register("email", {})}
                     className="  w-full outline-none h-12 text-lg px-16 shadow-sm rounded-2xl"
-                    type="email"
+                    type="text"
                     name="email"
                     id="email"
                     placeholder="email"
                   />
-                  <label className="">
-                    {errors.email?.type === "required" && (
-                      <span className="text-red-500">
-                        {errors.email.message}
-                      </span>
-                    )}
-                  </label>
+
                   <span className="text-2xl absolute top-2 left-4 text-gray-500">
                     <CgSmartphone />
                   </span>

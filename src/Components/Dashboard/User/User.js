@@ -4,7 +4,7 @@ import UserTable from "./UserTable";
 const User = () => {
   const [users, setUser] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/user/user")
+    fetch("https://gaming-backend.vercel.app/api/v1/user/user")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

@@ -7,7 +7,7 @@ const RecordTable = ({ record }) => {
 
   const deleteHundler = (id) => {
     
-    fetch(`http://localhost:5000/api/v1/game/record/${id}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/game/record/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

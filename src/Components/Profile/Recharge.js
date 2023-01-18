@@ -18,12 +18,16 @@ const Recharge = () => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      PayId: 1234567,
+    },
+  });
   useEffect(() => {
     setLoding(true);
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
 
-    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+    fetch(`https://gaming-backend.vercel.app/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -59,13 +63,14 @@ const Recharge = () => {
     const myForm = new FormData();
     myForm.append("password", password);
     myForm.append("PayId", PayId);
-    myForm.append("email", email);
+    myForm.append("email", user?.email);
     myForm.append("RechargeAmoun", RechargeAmoun);
+    myForm.append("optionalEmail", email);
 
     myForm.append("images", screenshot);
     await axios({
       method: "post",
-      url: "http://localhost:5000/api/v1/reachrge/reachrge",
+      url: "https://gaming-backend.vercel.app/api/v1/reachrge/reachrge",
       data: myForm,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -73,8 +78,8 @@ const Recharge = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.data.success) {
+          setScreenshot(undefined)
           reset();
           toast.success(res.data.message, {
             position: "top-right",
@@ -152,6 +157,7 @@ const Recharge = () => {
                           message: "PayId is Required",
                         },
                       })}
+                      readOnly
                       className="  w-full outline-none h-12 text-lg px-16 shadow-sm rounded-2xl"
                       type="number"
                       name="PayId"
@@ -211,24 +217,24 @@ const Recharge = () => {
                   <div className=" h-12 relative mt-2">
                     <input
                       {...register("email", {
-                        required: {
-                          value: true,
-                          message: "email is Required",
-                        },
+                        // required: {
+                        //   value: true,
+                        //   message: "email is Required",
+                        // },
                       })}
                       className="  w-full outline-none h-12 text-lg px-16 shadow-sm rounded-2xl"
-                      type="email"
+                      type="text"
                       name="email"
                       id="email"
                       placeholder="email"
                     />
-                    <label className="">
+                    {/* <label className="">
                       {errors.email?.type === "required" && (
                         <span className="text-red-500">
                           {errors.email.message}
                         </span>
                       )}
-                    </label>
+                    </label> */}
                     <span className="text-2xl absolute top-2 left-4 text-gray-500">
                       <CgSmartphone />
                     </span>

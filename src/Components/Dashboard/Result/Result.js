@@ -4,7 +4,7 @@ import RasultTable from "./RasultTable";
 const Result = () => {
   const [results, setResult] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/result/allResult")
+    fetch("https://gaming-backend.vercel.app/api/v1/result/allResult")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {

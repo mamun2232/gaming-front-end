@@ -12,13 +12,13 @@ const Game = () => {
   const [reFetch, setReFetch] = useState(false);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/result/peroid")
+    fetch("https://gaming-backend.vercel.app/api/v1/result/peroid")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
           setProid(result.peroid);
 
-          fetch(`http://localhost:5000/api/v1/game/game/${result?.peroid}`)
+          fetch(`https://gaming-backend.vercel.app/api/v1/game/game/${result?.peroid}`)
             .then((res) => res.json())
             .then((data) => {
               if (data.success) {
@@ -48,7 +48,7 @@ const Game = () => {
       return { id: userId, money: money * 2 };
     });
 
-    fetch("http://localhost:5000/api/v1/game/game/win", {
+    fetch("https://gaming-backend.vercel.app/api/v1/game/game/win", {
       method: "PUT",
       body: JSON.stringify(facebookMap),
       headers: {
@@ -64,7 +64,7 @@ const Game = () => {
             price: facebookAmoun,
             winResult: "facebook",
           };
-          fetch("http://localhost:5000/api/v1/result/results", {
+          fetch("https://gaming-backend.vercel.app/api/v1/result/results", {
             method: "POST",
             body: JSON.stringify(peroidResult),
             headers: {
@@ -95,7 +95,7 @@ const Game = () => {
       return { id: userId, money: money * 2 };
     });
 
-    fetch("http://localhost:5000/api/v1/game/game/win/tiktok", {
+    fetch("https://gaming-backend.vercel.app/api/v1/game/game/win/tiktok", {
       method: "PUT",
       body: JSON.stringify(tiktokMap),
       headers: {
@@ -111,7 +111,7 @@ const Game = () => {
             price: tiktokAmoun,
             winResult: "Tiktok",
           };
-          fetch("http://localhost:5000/api/v1/result/results", {
+          fetch("https://gaming-backend.vercel.app/api/v1/result/results", {
             method: "POST",
             body: JSON.stringify(peroidResult),
             headers: {

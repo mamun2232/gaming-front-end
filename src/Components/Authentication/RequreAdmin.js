@@ -15,7 +15,7 @@ const RequreAdmin = ({ children }) => {
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
 
-    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+    fetch(`https://gaming-backend.vercel.app/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

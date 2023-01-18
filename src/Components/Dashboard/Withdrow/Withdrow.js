@@ -6,11 +6,11 @@ const Withdrow = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/api/v1/withdrow/allWithdrow")
+    fetch("https://gaming-backend.vercel.app/api/v1/withdrow/allWithdrow")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setWithdrow(data.withdrow);
+          setWithdrow(data.withdrow.reverse());
           setLoading(false);
         }
       });

@@ -12,7 +12,7 @@ const Contect = () => {
   } = useForm();
 
   const onSubmit = async ({ name, email, phone, subject, message }) => {
-    fetch("http://localhost:5000/api/v1/contect/contect", {
+    fetch("https://gaming-backend.vercel.app/api/v1/contect/contect", {
       method: "POST",
       body: JSON.stringify({ name, email, phone, subject, message }),
       headers: {

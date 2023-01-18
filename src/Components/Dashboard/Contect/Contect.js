@@ -4,7 +4,7 @@ import ContectTable from "./ContectTable";
 const Contect = () => {
       const [contects, setContect] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/contect/contect")
+    fetch("https://gaming-backend.vercel.app/api/v1/contect/contect")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

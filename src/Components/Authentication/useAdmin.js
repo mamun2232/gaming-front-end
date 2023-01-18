@@ -8,7 +8,7 @@ const useAdmin = ( user ) => {
     const email = user?.email;
     console.log(email)
     if (email) {
-      fetch(`http://localhost:5000/api/v1/user/chackAdmin/${email}`, {
+      fetch(`https://gaming-backend.vercel.app/api/v1/user/chackAdmin/${email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("gamingToken")}`,

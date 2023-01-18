@@ -13,12 +13,12 @@ const GamingModal = ({
   peroid,
   userIdNumber,
 }) => {
-  const [selectedMoney, setSelectedMoney] = useState(10);
+  const [selectedMoney, setSelectedMoney] = useState(20);
   // const [totalMoney , setTotalMoney] = useState(10)
   const [quantity, setQuantity] = useState(1);
   const [agree, setAgree] = useState(false);
   const contractMoney = [
-    { money: 10 },
+    { money: 20 },
     { money: 100 },
     { money: 1000 },
     { money: 10000 },
@@ -61,7 +61,7 @@ const GamingModal = ({
       number == 9 ||
       number == "facebook"
     ) {
-      fetch("http://localhost:5000/api/v1/game/win", {
+      fetch("https://gaming-backend.vercel.app/api/v1/game/win", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -104,7 +104,7 @@ const GamingModal = ({
           }
         });
     } else {
-      fetch("http://localhost:5000/api/v1/game/win", {
+      fetch("https://gaming-backend.vercel.app/api/v1/game/win", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

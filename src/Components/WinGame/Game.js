@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../Utilites/Loading";
 import GamingModal from "./GamingModal";
 import RuleModaal from "./RuleModaal";
+import { GrFormNext } from "react-icons/gr";
+import { IoIosArrowBack} from "react-icons/io";
 const Game = () => {
   const [user, setUser] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -38,23 +40,22 @@ const Game = () => {
   }
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
-    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+    fetch(`https://gaming-backend.vercel.app/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
-
         if (data.success) {
           setUser(data.user);
         }
       });
 
-    fetch("http://localhost:5000/api/v1/result/peroid")
+    fetch("https://gaming-backend.vercel.app/api/v1/result/peroid")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
           setProid(result.peroid);
         }
       });
-    fetch("http://localhost:5000/api/v1/result/allResult")
+    fetch("https://gaming-backend.vercel.app/api/v1/result/allResult")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -75,7 +76,6 @@ const Game = () => {
     { number: 8, color: "red" },
     { number: 9, color: "sky" },
   ];
-
 
   const gameStartHendeler = (number, color) => {
     openModal();
@@ -187,8 +187,8 @@ const Game = () => {
               <RuleModaal isRule={isRule} ruleClseModal={ruleClseModal} />
             )}
 
-            <div className="pr-2">
-              <div className=" mt-7 bg-white rounded-sm h-[600px] w-full mb-10">
+            <div className="pr-2 pb-20">
+              <div className=" mt-7 bg-white rounded-sm h-[710px] w-full">
                 <div className=" flex justify-center py-4">
                   <div className="  flex ">
                     <span className="text-xl ">
@@ -206,7 +206,7 @@ const Game = () => {
                     <div className="flex items-center  lg:w-[5vw] h-12">
                       <p className=" font-medium text-gray-500">Price</p>
                     </div>
-                  
+
                     <div className="flex items-center  h-12 lg:w-[5vw]">
                       <p className=" font-medium text-gray-500">Result</p>
                     </div>
@@ -231,14 +231,22 @@ const Game = () => {
                       </div>
                     </div>
                   ))}
+                  <div className=" flex justify-between mt-2 px-4">
+                  <div className=" bg-base-200 border border-white px-4 py-1 rounded-lg">
+                      <span>
+                        <IoIosArrowBack/>
+                      </span>
+                    </div>
+                    <div className=" bg-base-200 border border-white px-4 py-1 rounded-lg">
+                      <span className="text-md">
+                        <GrFormNext />
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* <div className=" mt-5 bg-white rounded-sm h-[600px] mb-10">
-
-        </div> */}
         </div>
       )}
     </div>

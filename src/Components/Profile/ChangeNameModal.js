@@ -12,7 +12,7 @@ const ChangeNameModal = ({ isOpen, closeModal, userId, setChangeName }) => {
     handleSubmit,
   } = useForm();
   const onSubmit = async ({ name }) => {
-    fetch(`http://localhost:5000/api/v1/user/update/${userId}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/user/update/${userId}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineMail, AiOutlineWhatsApp } from "react-icons/ai";
 import { BsFileEarmarkCode } from "react-icons/bs";
@@ -10,6 +10,7 @@ import { registerUser } from "../../app/slice/authSlice";
 
 const EmailRegister = () => {
   const user = useSelector((state) => state.user.user);
+  const [agree, setAgree] = useState(false);
   console.log(user);
   const navigate = useNavigate();
   const {
@@ -145,7 +146,10 @@ const EmailRegister = () => {
 
         <input
           // onClick={() => navigate("/")}
-          className="  w-full outline-none h-12   font-medium  bg-[#c7984a] mt-5 text-lg px-16 shadow-sm rounded-lg"
+          disabled={!agree}
+          className={`${
+            agree == false ? " bg-[#fdba74]" : "bg-[#c7984a]"
+          } w-full outline-none h-12   font-medium   mt-5 text-lg px-16 shadow-sm rounded-lg`}
           type="submit"
           value="Register"
         />
@@ -165,7 +169,12 @@ const EmailRegister = () => {
           </p>
 
           <div className=" mt-2">
-            <input type="checkbox" name="" id="" />
+            <input
+              onClick={() => setAgree(!agree)}
+              type="checkbox"
+              name=""
+              id=""
+            />
             <span className="px-3 ">
               I agree{" "}
               <span className="text-[#c7984a] cursor-pointer uppercase">

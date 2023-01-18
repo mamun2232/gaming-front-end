@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 const WithdrowTable = ({ withdrows }) => {
   const payHendler = (id) => {
-    fetch(`http://localhost:5000/api/v1/withdrow/status/${id}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/withdrow/status/${id}`, {
       method: "PUT",
       body: JSON.stringify({
         status: "PAID",
@@ -31,7 +31,7 @@ const WithdrowTable = ({ withdrows }) => {
   };
 
   const deleteHundler = (id) => {
-    fetch(`http://localhost:5000/api/v1/withdrow/withdrow/${id}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/withdrow/withdrow/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -61,7 +61,7 @@ const WithdrowTable = ({ withdrows }) => {
             <span
               class={`bg-red-50 text-[#ff4019] inline-flex items-center gap-1 rounded-full  px-2 py-1 text-xs font-semibold`}
             >
-              {email}
+              {email ? email : "No Email"}
             </span>
           </td>
           <td class="px-6 py-4">{withdrowAmoun} Point</td>
@@ -88,7 +88,10 @@ const WithdrowTable = ({ withdrows }) => {
           </th>
           <td class="px-6 py-4">
             <div>
-              <button onClick={()=>deleteHundler(_id)} x-data="{ tooltip: 'Delete' }" >
+              <button
+                onClick={() => deleteHundler(_id)}
+                x-data="{ tooltip: 'Delete' }"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

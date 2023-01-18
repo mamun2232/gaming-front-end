@@ -5,7 +5,7 @@ const UserTable = ({ users }) => {
   const [admin, setAdmin] = useState({});
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
-    fetch(`http://localhost:5000/api/v1/user/user/${userInfo?._id}`)
+    fetch(`https://gaming-backend.vercel.app/api/v1/user/user/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -18,7 +18,7 @@ const UserTable = ({ users }) => {
   const adminRequestHendler = (email, role) => {
   
     fetch(
-      `http://localhost:5000/api/v1/user/admin/${email}?admin=${admin.email}`,
+      `https://gaming-backend.vercel.app/api/v1/user/admin/${email}?admin=${admin.email}`,
       {
         method: "PUT",
         headers: {
@@ -55,7 +55,7 @@ const UserTable = ({ users }) => {
   };
 
   const deleteHundler = (id) => {
-    fetch(`http://localhost:5000/api/v1/user/user/${id}`, {
+    fetch(`https://gaming-backend.vercel.app/api/v1/user/user/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
