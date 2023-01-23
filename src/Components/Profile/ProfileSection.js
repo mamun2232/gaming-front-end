@@ -15,6 +15,8 @@ import { logOut } from "../../app/slice/authSlice";
 import axios from "axios";
 import Loading from "../Utilites/Loading";
 import ChangeNameModal from "./ChangeNameModal";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { toast } from "react-toastify";
 const ProfileSection = () => {
   const [wallet, setWallet] = useState(false);
   const [report, setRepot] = useState(false);
@@ -25,7 +27,8 @@ const ProfileSection = () => {
   const navigate = useNavigate();
   const disPatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [changeName , setChangeName] = useState(false)
+  const [changeName, setChangeName] = useState(false);
+  const [copid , setCopid] = useState(false)
   useEffect(() => {
     setLoading(true);
     const userInfo = JSON.parse(localStorage.getItem("gamingUser"));
@@ -45,15 +48,21 @@ const ProfileSection = () => {
   function openModal() {
     setIsOpen(true);
   }
+  
+  console.log(user);
+  const copyHendler = () =>{
+    setCopid(true)
+    toast.success("Copid")
 
+  }
   return (
     <div className=" bg-base-200">
       {loading ? (
         <Loading />
       ) : (
         <div className=" pt-4 px-4">
-          <div className=" h-48 bg-white rounded-lg px-4 py-4">
-            <div className="flex gap-3 mt-2">
+          <div className=" h-76 bg-white rounded-lg px-4 py-4">
+            <div className="flex gap-3">
               <div className="mt-4">
                 <img
                   className=" w-12 h-12 rounded-full "
@@ -74,10 +83,13 @@ const ProfileSection = () => {
                 <p className="text-gay-900 font-medium text-sm mt-1">
                   Availabe Balance {user?.balance}
                 </p>
+                <p className="text-gay-900 font-medium text-sm mt-1">
+                  Total Shared {user?.shared}
+                </p>
               </div>
             </div>
 
-            <div className=" flex justify-around mt-3">
+            <div className=" flex justify-around mt-2">
               <button
                 onClick={() => navigate("/recharge")}
                 className=" w-[100px] bg-[#c7984a] px-4 rounded-lg py-2 "
@@ -91,6 +103,23 @@ const ProfileSection = () => {
                 Change Nick Name
               </button>
             </div>
+            <div className="bg-base-200 h-8 lg:mt-2 mt-4 rounded  ">
+            <div className=" lg:flex justify-between items-center px-1 lg:px-4">
+            <div>
+           <div className=" flex  items-center">
+           <small className=" font-medium   block">http://localhost:3000/referGame/123/{user?.userId}</small>
+           </div>
+           
+            </div>
+              <CopyToClipboard text={`http://localhost:3000/referGame/123/${user?.userId}`}>
+                
+                <button onClick={()=>copyHendler()}  className=" mt-4 lg:mt-1 bg-base-200   border-[#c7984a]  border-2 px-4 rounded-lg  ">Copy</button>
+              </CopyToClipboard>
+            </div>
+            
+            </div>
+            <small className=" font-medium text-red-500 lg:mt-1 mt-8  text-center block">You Will Get 30 Points If You Create New Users By Sharing the Link</small>
+           
           </div>
 
           <div className="  h-full bg-white rounded-lg px-4 py-4 mt-5">
@@ -276,7 +305,7 @@ const ProfileSection = () => {
             )}
           </div>
 
-          <div className=" py-5">
+          <div className=" pt-5 pb-20">
             <button
               onClick={() => disPatch(logOut())}
               className=" h-12 bg-white rounded-lg shadow-md w-full  uppercase"
@@ -287,12 +316,14 @@ const ProfileSection = () => {
         </div>
       )}
 
-      {isOpen && <ChangeNameModal 
-      closeModal={closeModal}
-      userId={user?._id}
-      setChangeName={setChangeName}
-      isOpen={isOpen} />
-      }
+      {isOpen && (
+        <ChangeNameModal
+          closeModal={closeModal}
+          userId={user?._id}
+          setChangeName={setChangeName}
+          isOpen={isOpen}
+        />
+      )}
     </div>
   );
 };

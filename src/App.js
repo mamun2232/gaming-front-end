@@ -24,6 +24,7 @@ import User from "./Components/Dashboard/User/User";
 import RequreAdmin from "./Components/Authentication/RequreAdmin";
 import Contect from "./Components/Profile/Contect";
 import ContectD from "./Components/Dashboard/Contect/Contect";
+import ReferSingUp from "./Components/ReferAuthenTicate/ReferSingUp";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -137,6 +138,7 @@ function App() {
           <Route path="/recharge" element={<Recharge />} />
           <Route path="/gift" element={<Gift />} />
           <Route path="/restPassword" element={<ResetPassword />} />
+          <Route path="/referGame/123/:referId" element={<ReferSingUp />} />
         </Routes>
 
         <ToastContainer

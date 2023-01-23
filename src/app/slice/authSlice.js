@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-const gamingUser= localStorage.getItem("gamingUser");
+const gamingUser = localStorage.getItem("gamingUser");
 const user = JSON.parse(gamingUser);
 const initialState = {
   user: user || null,
@@ -23,14 +23,12 @@ export const loginUser = createAsyncThunk("login", async (body) => {
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers:{
-    logOut: (state) =>{
-      localStorage.removeItem("gamingUser")
-      localStorage.removeItem("gamingToken")
-      state.user = null
-
-    }
-
+  reducers: {
+    logOut: (state) => {
+      localStorage.removeItem("gamingUser");
+      localStorage.removeItem("gamingToken");
+      state.user = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,7 +47,7 @@ export const userSlice = createSlice({
         } else {
           const gamingUser = action.payload.user;
           localStorage.setItem("gamingUser", JSON.stringify(gamingUser));
-          const gamingToken = action.payload.token
+          const gamingToken = action.payload.token;
           localStorage.setItem("gamingToken", JSON.stringify(gamingToken));
         }
       })
@@ -73,7 +71,7 @@ export const userSlice = createSlice({
         } else {
           const gamingUser = action.payload.user;
           localStorage.setItem("gamingUser", JSON.stringify(gamingUser));
-          const gamingToken = action.payload.token
+          const gamingToken = action.payload.token;
           localStorage.setItem("gamingToken", JSON.stringify(gamingToken));
         }
       })
@@ -85,5 +83,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const {  logOut  } = userSlice.actions;
+export const { logOut } = userSlice.actions;
 export default userSlice.reducer;
