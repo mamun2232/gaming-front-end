@@ -107,11 +107,11 @@ const ProfileSection = () => {
             <div className=" lg:flex justify-between items-center px-1 lg:px-4">
             <div>
            <div className=" flex  items-center">
-           <small className=" font-medium   block">http://localhost:3000/referGame/123/{user?.userId}</small>
+           <small className=" font-medium   block">https://gaming-app-deecc.web.app/referGame/123/{user?.userId}</small>
            </div>
            
             </div>
-              <CopyToClipboard text={`http://localhost:3000/referGame/123/${user?.userId}`}>
+              <CopyToClipboard text={`https://gaming-app-deecc.web.app/referGame/123/${user?.userId}`}>
                 
                 <button onClick={()=>copyHendler()}  className=" mt-4 lg:mt-1 bg-base-200   border-[#c7984a]  border-2 px-4 rounded-lg  ">Copy</button>
               </CopyToClipboard>

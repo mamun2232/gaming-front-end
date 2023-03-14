@@ -14,14 +14,11 @@ const Game = () => {
   const [selectedColor, setSelectedColor] = useState(null);
   const [isRule, setIsRule] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [minutes, setMinutes] = useState(
-    parseInt(localStorage.getItem("minutes")) || 1
-  );
-  const [seconds, setSeconds] = useState(
-    parseInt(localStorage.getItem("seconds")) || 0
-  );
   const [peroid, setProid] = useState(null);
   const [result, setResult] = useState([]);
+  let secondsRemaining = localStorage.getItem('secondsRemaining') || 360;
+  const [seconds, setSeconds] = useState(secondsRemaining);
+
 
   const navigate = useNavigate();
   function closeModal() {
@@ -63,6 +60,20 @@ const Game = () => {
         }
       });
   }, [isOpen, peroid]);
+
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds => seconds - 1);
+        localStorage.setItem('secondsRemaining', seconds);
+      } else {
+        clearInterval(interval);
+        localStorage.removeItem('secondsRemaining');
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [seconds]);
 
   const gamingNumber = [
     { number: 0, color: "red" },
@@ -133,7 +144,8 @@ const Game = () => {
                 <div className="  text-end px-4">
                   <span className="  text-gray-700">Count Down</span>
                   <p className=" pl-4 text-2xl">
-                    <Countdown date={Date.now() + 360000} />
+                    {/* <Countdown date={Date.now() + 360000} /> */}
+                    {seconds}
                   </p>
                 </div>
               </div>
@@ -203,11 +215,11 @@ const Game = () => {
                     <div className="flex flex-1 items-center  h-12">
                       <p className=" font-medium text-gray-500">Period</p>
                     </div>
-                    <div className="flex items-center  lg:w-[5vw] h-12">
+                    <div className="flex items-center w-[20vw]  lg:w-[5vw] h-12">
                       <p className=" font-medium text-gray-500">Price</p>
                     </div>
 
-                    <div className="flex items-center  h-12 lg:w-[5vw]">
+                    <div className="flex items-center  h-12   lg:w-[5vw] w-16">
                       <p className=" font-medium text-gray-500">Result</p>
                     </div>
                   </div>
@@ -215,22 +227,42 @@ const Game = () => {
                 <div className=" h-10">
                   {result?.slice(0, 14).map(({ peroid, price, winResult }) => (
                     <div key={peroid} className="flex px-4 gap-10">
-                      <div className="flex lg:w-[80vw] w-[33vw] items-center   h-10">
+                      <div className="flex flex-1  items-center   h-10">
                         <p className=" font-medium text-gray-700">{peroid}</p>
                       </div>
-                      <div className="flex items-center lg:w-[5vw]  h-10">
+                      <div className="flex items-center  w-[20vw]  lg:w-[5vw]  h-10">
                         <p className=" font-medium text-gray-700">{price}</p>
                       </div>
-                      {/* <div className="flex items-center w-[3vw] h-10">
-                    <p className=" font-medium text-gray-700">5</p>
-                  </div> */}
-                      <div className="flex items-center w-[2vw] h-10">
-                        <p className=" font-medium text-gray-700">
+                      
+                      <div className="flex items-center lg:w-[5vw] w-16  h-10">
+                        <p className={`${winResult === "facebook" ? "text-[#2374e1]": "text-[#ff4019]"} font-medium `}>
                           {winResult}
                         </p>
                       </div>
                     </div>
+                  // <div key={peroid}  className=" grid grid-cols-3  px-4 gap-10 h-10 w-full">
+                    
+                  //   <div className=" w-[80vw]">
+                  //   <p className=" font-medium text-gray-700">{peroid}</p>
+                  //   </div>
+                  //   {/* <div></div>
+                  //   <div></div>
+                  //   <div></div>
+                  //   <div></div> */}
+                  
+                  //   <div className=" w-[10vw]">
+                  //   <p className=" font-medium text-gray-700">{price}</p>
+                  //   </div>
+                  //   <div className="w-[10vw]">
+                  //   <p className=" font-medium text-gray-700">
+                  //         {winResult}
+                  //        </p>
+                  //   </div>
+
+                  // </div>
                   ))}
+
+                  
                   <div className=" flex justify-between mt-2 px-4">
                   <div className=" bg-base-200 border border-white px-4 py-1 rounded-lg">
                       <span>
