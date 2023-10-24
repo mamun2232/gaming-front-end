@@ -6,7 +6,7 @@ import Loading from "../Utilites/Loading";
 import GamingModal from "./GamingModal";
 import RuleModaal from "./RuleModaal";
 import { GrFormNext } from "react-icons/gr";
-import { IoIosArrowBack} from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 const Game = () => {
   const [user, setUser] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +16,8 @@ const Game = () => {
   const [loading, setLoading] = useState(false);
   const [peroid, setProid] = useState(null);
   const [result, setResult] = useState([]);
-  let secondsRemaining = localStorage.getItem('secondsRemaining') || 360;
+  let secondsRemaining = localStorage.getItem("secondsRemaining") || 360;
   const [seconds, setSeconds] = useState(secondsRemaining);
-
 
   const navigate = useNavigate();
   function closeModal() {
@@ -61,15 +60,14 @@ const Game = () => {
       });
   }, [isOpen, peroid]);
 
-  
   useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {
-        setSeconds(seconds => seconds - 1);
-        localStorage.setItem('secondsRemaining', seconds);
+        setSeconds((seconds) => seconds - 1);
+        localStorage.setItem("secondsRemaining", seconds);
       } else {
         clearInterval(interval);
-        localStorage.removeItem('secondsRemaining');
+        localStorage.removeItem("secondsRemaining");
       }
     }, 1000);
     return () => clearInterval(interval);
@@ -111,7 +109,7 @@ const Game = () => {
                 onClick={() => navigate("/recharge")}
                 className=" w-[100px] bg-[#c7984a] px-4 rounded-lg py-2 font-medium"
               >
-                Rechage
+                Recharge
               </button>
               <button
                 onClick={() => ruleOpenModal()}
@@ -156,14 +154,14 @@ const Game = () => {
                 onClick={() => gameStartHendeler("facebook", "sky")}
                 className=" px-6 py-2 rounded-lg bg-[#2374e1] text-[#ffffff]"
               >
-                Facebook
+                Sky Color
               </button>
 
               <button
                 onClick={() => gameStartHendeler("TikTok", "red")}
                 className=" px-6 py-2 rounded-lg bg-[#ff4019] text-[#ffffff]"
               >
-                Tiktok
+                Red Color
               </button>
             </div>
 
@@ -206,7 +204,7 @@ const Game = () => {
                     <span className="text-xl ">
                       <GiTrophyCup />
                     </span>{" "}
-                    <span className="  text-gray-700">Peroid</span>
+                    <span className="  text-gray-700">PeriodId</span>
                   </div>
                 </div>
 
@@ -233,40 +231,45 @@ const Game = () => {
                       <div className="flex items-center  w-[20vw]  lg:w-[5vw]  h-10">
                         <p className=" font-medium text-gray-700">{price}</p>
                       </div>
-                      
+
                       <div className="flex items-center lg:w-[5vw] w-16  h-10">
-                        <p className={`${winResult === "facebook" ? "text-[#2374e1]": "text-[#ff4019]"} font-medium `}>
-                          {winResult}
+                        <p
+                          className={`${
+                            winResult === "facebook"
+                              ? "text-[#2374e1]"
+                              : "text-[#ff4019]"
+                          } font-medium `}
+                        >
+                          {winResult == "facebook" ? "Sky Color" : "Red Color"}
                         </p>
                       </div>
                     </div>
-                  // <div key={peroid}  className=" grid grid-cols-3  px-4 gap-10 h-10 w-full">
-                    
-                  //   <div className=" w-[80vw]">
-                  //   <p className=" font-medium text-gray-700">{peroid}</p>
-                  //   </div>
-                  //   {/* <div></div>
-                  //   <div></div>
-                  //   <div></div>
-                  //   <div></div> */}
-                  
-                  //   <div className=" w-[10vw]">
-                  //   <p className=" font-medium text-gray-700">{price}</p>
-                  //   </div>
-                  //   <div className="w-[10vw]">
-                  //   <p className=" font-medium text-gray-700">
-                  //         {winResult}
-                  //        </p>
-                  //   </div>
+                    // <div key={peroid}  className=" grid grid-cols-3  px-4 gap-10 h-10 w-full">
 
-                  // </div>
+                    //   <div className=" w-[80vw]">
+                    //   <p className=" font-medium text-gray-700">{peroid}</p>
+                    //   </div>
+                    //   {/* <div></div>
+                    //   <div></div>
+                    //   <div></div>
+                    //   <div></div> */}
+
+                    //   <div className=" w-[10vw]">
+                    //   <p className=" font-medium text-gray-700">{price}</p>
+                    //   </div>
+                    //   <div className="w-[10vw]">
+                    //   <p className=" font-medium text-gray-700">
+                    //         {winResult}
+                    //        </p>
+                    //   </div>
+
+                    // </div>
                   ))}
 
-                  
                   <div className=" flex justify-between mt-2 px-4">
-                  <div className=" bg-base-200 border border-white px-4 py-1 rounded-lg">
+                    <div className=" bg-base-200 border border-white px-4 py-1 rounded-lg">
                       <span>
-                        <IoIosArrowBack/>
+                        <IoIosArrowBack />
                       </span>
                     </div>
                     <div className=" bg-base-200 border border-white px-4 py-1 rounded-lg">

@@ -30,7 +30,7 @@ const DashboardItem = () => {
                 isActive ? "bg-[#ff4019] text-white" : ""
               }
             >
-              Withdrow
+              Withdraw
             </NavLink>
           </li>
           <li>
@@ -40,7 +40,7 @@ const DashboardItem = () => {
                 isActive ? "bg-[#ff4019] text-white" : ""
               }
             >
-              Reachrge
+              Recharge
             </NavLink>
           </li>
           <li>

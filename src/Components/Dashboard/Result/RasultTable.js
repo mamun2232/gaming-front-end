@@ -36,7 +36,9 @@ const RasultTable = ({ results }) => {
               {price}
             </span>
           </td>
-          <td class="px-6 py-4">{winResult}</td>
+          <td class="px-6 py-4">
+            {winResult === "facebook" ? "Sky Color" : "Red Color"}
+          </td>
 
           <td class="px-6 py-4">
             <div>

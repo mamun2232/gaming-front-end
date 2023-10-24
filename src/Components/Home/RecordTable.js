@@ -3,10 +3,8 @@ import { toast } from "react-toastify";
 
 const RecordTable = ({ record }) => {
   const { PeroidNo, selectGame, resultGameName, money, id } = record;
- 
 
   const deleteHundler = (id) => {
-    
     fetch(`https://gaming-backend.vercel.app/api/v1/game/record/${id}`, {
       method: "DELETE",
     })
@@ -46,7 +44,7 @@ const RecordTable = ({ record }) => {
                 selectGame === "facebook" ? "bg-[#2374e1]" : "bg-[#ff4019]"
               } h-1.5 w-1.5 rounded-full`}
             ></span>
-            {selectGame}
+            {selectGame === "facebook" ? "Sky Color" : "Red Color"}
           </span>
         </td>
         <td class="px-6 py-4">{money} USD</td>
@@ -66,7 +64,7 @@ const RecordTable = ({ record }) => {
                     : "bg-[#ff4019]"
                 } h-1.5 w-1.5 rounded-full`}
               ></span>
-              {resultGameName}
+              {resultGameName === "facebook" ? "Sky Color" : "Red Color"}
             </span>
           </div>
         </td>

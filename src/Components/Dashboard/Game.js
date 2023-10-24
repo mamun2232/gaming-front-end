@@ -18,7 +18,9 @@ const Game = () => {
         if (result.success) {
           setProid(result.peroid);
 
-          fetch(`https://gaming-backend.vercel.app/api/v1/game/game/${result?.peroid}`)
+          fetch(
+            `https://gaming-backend.vercel.app/api/v1/game/game/${result?.peroid}`
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data.success) {
@@ -151,9 +153,9 @@ const Game = () => {
               {/* <!-- head --> */}
               <thead>
                 <tr>
-                  <th>Peroid No</th>
-                  <th>Facebook Total Amount</th>
-                  <th>tikTok Total Amount</th>
+                  <th>Period No</th>
+                  <th>Sky Total Amount</th>
+                  <th>Red Total Amount</th>
                   <th>Win Action</th>
                   <th>Win Action</th>
                 </tr>
@@ -193,7 +195,7 @@ const Game = () => {
                       className={` bg-[#2374e1]  text-white  px-8 py-1 rounded`}
                     >
                       {" "}
-                      Win Facebook
+                      Win Sky Color
                     </button>
                   </td>
                   <td>
@@ -203,7 +205,7 @@ const Game = () => {
                       className={` bg-[#ff4019] text-white  px-8 py-1  rounded`}
                     >
                       {" "}
-                      Win Tiktok
+                      Win Red Color
                     </button>
                   </td>
                 </tr>
